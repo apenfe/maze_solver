@@ -175,7 +175,7 @@ public class Maze{
 		int num = 0;
 		String file = ""; 
 				
-		ArrayList<String> mazeNames = obtainTxtNames(Config.PATH); // OBTIENE LOS NOMBRES DE LOS LABERINTOS
+		ArrayList<String> mazeNames = obtainTxtNames(Config.MAZES_PATH); // OBTIENE LOS NOMBRES DE LOS LABERINTOS
 		
 		do { // LOS MUESTRA EN UN MENU
 			
@@ -207,7 +207,7 @@ public class Maze{
 			deleteMaze(true); // SE RESETEAN LOS VALORES COMPLETOS
 		}
 		
-		if(readMaze(Config.PATH+file)) { // SI EL LABERINTO SE LEE CORRECTAMENTE
+		if(readMaze(Config.MAZES_PATH+file)) { // SI EL LABERINTO SE LEE CORRECTAMENTE
 			System.out.println(Config.GREEN+"\n\tEL ARCHIVO "+file+" HA SIDO CARGADO EXITOSAMENTE."+Config.RESET);
 			this.fileName=file; // SE LE DA NOMBRE
 			this.loaded=true; // SE VUELVE A INDICAR QUE ESTÁ CARGADO

@@ -3,8 +3,8 @@ package Classes;
 /* 
  * Config.java
  * 
- * APF - 31-01-2024
- * VERSION: 1.0.0
+ * APF - 30-04-2024
+ * VERSION: 1.2.0
  * 
  */
 
@@ -14,7 +14,7 @@ package Classes;
  * Incluye comprobación de expresiones regulares, menus, formatos de letras, cabeceras de menu, etc...
  * 
  * @author Adrián Peñalver Fernández
- * @version 1.0.0
+ * @version 1.2.0
  * 
  */
 
@@ -67,12 +67,17 @@ public class Config{
 	 * Campo estático que permite conocer la versión actual del software.
 	 */
 	
-	public static final String VERSION = BLUE+"✅ -- Version Estable: 1.1.0 --"+RESET;
+	public static final String VERSION = BLUE+"✅ -- Version Estable: 1.2.0 --"+RESET;
 	
 	/**
 	 * Campo estático que permite acceder al directorio donde se almacenan los laberintos.
 	 */
-	public static final String PATH = ".\\assets\\mazes\\";
+	public static final String MAZES_PATH = ".\\assets\\mazes\\";
+	
+	/**
+	 * Campo estático que permite acceder al directorio donde se almacena el LOG del sistema.
+	 */
+	public static final String LOG_PATH = ".\\assets\\files\\";
 	
 	/**
 	 * Campo estático que permite dar la bienvenida al usuario.
