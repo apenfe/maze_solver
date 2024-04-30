@@ -6,3 +6,24 @@
 30/04/2024 19:20:23 - [Datos usuario] - Usuario: @apenfe, ID: 1
 30/04/2024 19:20:31 - [Evento logout] - @apenfe
 30/04/2024 19:20:35 - [Final del Programa - [0;34m✅ -- Version Estable: 1.2.0 --[0m] - 
+30/04/2024 22:18:54 - ----------------------------------------
+[Inicio del Programa - [0;34m✅ -- Version Estable: 1.2.0 --[0m] - 
+30/04/2024 22:19:13 - [Evento login] - Login exitodo: @apenfe
+30/04/2024 22:19:25 - [Cargar laberinto] - Lanerinto: laberinto1.txt
+30/04/2024 22:19:28 - [Visualizacion laberinto] - Lanerinto: laberinto1.txt
+30/04/2024 22:19:37 - [Casillas Laberinto] - ERROR la casilla es una pared
+30/04/2024 22:19:44 - [Casillas Laberinto] - Casilla de entrada establecida --> 1 1
+30/04/2024 22:19:48 - [Casillas Laberinto] - Casilla de salida establecida --> 8 8
+30/04/2024 22:19:54 - [Solucionar laberinto] - Acceso menu algoritmos
+30/04/2024 22:19:55 - [Camino mas corto] - fracaso Numero de pasos: 0
+30/04/2024 22:20:04 - [Camino mas corto] - fracaso Numero de pasos: 110
+30/04/2024 22:20:15 - [Datos usuario] - Usuario: @apenfe, ID: 1
+30/04/2024 22:20:24 - [Cargar laberinto] - Lanerinto: laberinto2.txt
+30/04/2024 22:20:35 - [Casillas Laberinto] - Casilla de entrada establecida --> 1 1
+30/04/2024 22:20:40 - [Casillas Laberinto] - Casilla de salida establecida --> 19 19
+30/04/2024 22:20:46 - [Solucionar laberinto] - Acceso menu algoritmos
+30/04/2024 22:20:47 - [Camino mas corto] - exito Numero de pasos: 44
+30/04/2024 22:20:50 - [Camino mas corto] - exito Numero de pasos: 44
+30/04/2024 22:21:02 - [Evento logout] - @apenfe
+30/04/2024 22:21:53 - [Evento de registro] - Registro exitoso: @log
+30/04/2024 22:22:00 - [Final del Programa - [0;34m✅ -- Version Estable: 1.2.0 --[0m] - 

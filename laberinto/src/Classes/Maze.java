@@ -119,10 +119,16 @@ public class Maze{
 		
 	}
 	
+	
+	
 	/* METODOS DE LA CLASE MAZE */
 	
 	/* METODO PARA SABER SI ESTA CARGADO EL LABERINTO */
 	
+	public String getFileName() {
+		return fileName;
+	}
+
 	/**
 	 * Método que permite conocer el estado de carga del laberinto.
 	 * 
@@ -481,6 +487,7 @@ public class Maze{
 		
 		if(setIJ(true)) { // SI LA CASILLA DE ENTRADA SE ESTABLECE
 			System.out.println(Config.GREEN+"\r\tCASILLA DE ENTRADA FIJADA."+Config.RESET);
+			Log.insertLog(Log.MAZE_IN_OUT,"Casilla de entrada establecida --> "+startI+" "+startJ);
 		}else { // EN OTRO CASO, SI EL USUARIO DESISTE SE TERMINA EL PROGRAMA.
 			System.out.println(Config.RED+"\r\tNO SE HA PODIDO FIJAR LA CASILLA DE ENTRADA."+Config.RESET);
 			return;
@@ -490,6 +497,7 @@ public class Maze{
 		
 		if(setIJ(false)) { // SI LA CASILLA DE SALIDA SE ESTABLECE
 			System.out.println(Config.GREEN+"\r\tCASILLA DE SALIDA FIJADA."+Config.RESET);
+			Log.insertLog(Log.MAZE_IN_OUT,"Casilla de salida establecida --> "+endI+" "+endJ);
 		}else { // EN OTRO CASO, SI EL USUARIO DESISTE SE TERMINA EL PROGRAMA.
 			System.out.println(Config.RED+"\r\tNO SE HA PODIDO FIJAR LA CASILLA DE SALIDA."+Config.RESET);
 		}
@@ -519,6 +527,8 @@ public class Maze{
 				
 				if(num<0 || num>map.length-1) {
 					System.out.println(Config.RED+"\r\tEl número debe de ser mayor o igual que 0 y menor que "+(map.length-1)+Config.RESET);
+					Log.insertLog(Log.MAZE_IN_OUT,"ERROR al fijar fila: "+num);
+
 				}
 				
 			}while(num<0 || num>map.length-1);
@@ -535,6 +545,7 @@ public class Maze{
 				
 				if(num<0 || num>map[0].length-1) {
 					System.out.println(Config.RED+"\r\tEl número debe de ser mayor o igual que 0 y menor que "+(map[0].length-1)+Config.RESET);
+					Log.insertLog(Log.MAZE_IN_OUT,"ERROR al fijar columna: "+num);
 				}
 				
 			}while(num<0 || num>map[0].length-1);
@@ -548,6 +559,7 @@ public class Maze{
 			if(sameInOut()) { // SI LAS CASILLAS DE ENTRADA Y SALIDA SON LAS MISMAS
 				
 				System.out.println(Config.RED+"\r\tLas casillas de entrada y salida coinciden."+Config.RESET);
+				Log.insertLog(Log.MAZE_IN_OUT,"ERROR casillas coinciden");
 				
 				if(Utils.confirmExit("\r\t¿Desea ingresar otra casilla de "+casilla+"? SI-S NO-N ", "N")) {
 					deleteMaze(false); // SE RESETEAN ENTRADA Y SALIDA
@@ -563,6 +575,7 @@ public class Maze{
 				} else { // EN OTRO CASO...
 					
 					System.out.println(Config.RED+"\r\tLa casilla coincide con una pared."+Config.RESET);
+					Log.insertLog(Log.MAZE_IN_OUT,"ERROR la casilla es una pared");
 					
 					if (Utils.confirmExit("\r\t¿Desea ingresar otra casilla de " + casilla + "? SI-S NO-N ", "N")) {
 						deleteMaze(false); // SE RESETEAN ENTRADA Y SALIDA
@@ -621,17 +634,21 @@ public class Maze{
 		char[][] maze = simplifyMaze();
 
 		long inicio = System.currentTimeMillis();
+		String exit="";
 		
 		if (goAhead(startI, startJ,maze)) {
-			
+			exit="exito";
 			printPath();
 			showMaze();
 
 		} else {
-			
+			exit="fracaso";
+
 			System.out.println(Config.RED+"\n\tEl laberinto no tiene solución."+Config.RESET);
 			
 		}
+		
+		Log.insertLog(Log.SHORTER_WAY,exit+" Numero de pasos: "+path.size());
 		
 		time(inicio);
 
@@ -731,15 +748,18 @@ public class Maze{
 		}
 		
 		goAheadAllWays(startI, startJ, path2,maze);
-		
+		String exit ="";
 		if(this.find) { 
-			
+			exit="exito";
 			printPath();
 			showMaze();
 			
 		}else {
+			exit="fracaso";
 			System.out.println(Config.RED+"\n\tNo hay ninguna solución posible."+Config.RESET);
 		}
+		
+		Log.insertLog(Log.SHORTER_WAY,exit+" Numero de pasos: "+path.size());
 		
 		time(inicio);
 

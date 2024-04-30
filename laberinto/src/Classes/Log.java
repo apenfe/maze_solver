@@ -8,7 +8,7 @@ public class Log{
 	
 	private static final String LOG_NAME = "syslog.txt";
 	
-	public static final String INIT = "[Inicio del Programa - "+Config.VERSION+"]"; 
+	public static final String INIT = "---------------------------------------------------------\n[Inicio del Programa - "+Config.VERSION+"]"; 
 	public static final String EXIT = "[Final del Programa - "+Config.VERSION+"]"; 
 	public static final String LOGIN = "[Evento login]"; 
 	public static final String SIGNUP = "[Evento de registro]"; 
@@ -20,15 +20,6 @@ public class Log{
 	public static final String USER = "[Datos usuario]";
 	public static final String FIRST_WAY = "[Primer camino]";
 	public static final String SHORTER_WAY = "[Camino mas corto]";
-	
-	/*
-● Establecer casillas con éxito (valores de las coordenadas)
-● Establecer casillas con error (valores de las coordenadas)
-● Error acceder a la selección buscar caminos (motivo: no se ha cargado laberinto o
-no hay casillas)
-● Resolver primer camino (éxito o sin solución + cantidad de pasos)
-● Resolver camino más corto (éxito o sin solución + cantidad de pasos)
-	 */
 	
 	public static boolean insertLog(String event, String dataEvent) {
 		

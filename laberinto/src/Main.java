@@ -185,6 +185,7 @@ public class Main {
 			
 			if(currentMaze.isLoaded()) {
 				System.out.println("\t"+Config.MAZE);
+				Log.insertLog(Log.SHOW_MAZE,"Lanerinto: "+currentMaze.getFileName());
 				currentMaze.showMaze();
 				
 			}else {
@@ -221,7 +222,7 @@ public class Main {
 			}else {
 				
 				System.out.println("\n\tDebe de cargar un laberinto para poder calcular una solución y establecer entrada y salida.");
-				Log.insertLog(Log.SHOW_MAZE,"ERROR: No se ha cargado el laberinto.");
+				Log.insertLog(Log.SHOW_MAZE,"ERROR: No se ha cargado el laberinto o las casillas");
 
 			}
 			
