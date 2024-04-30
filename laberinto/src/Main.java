@@ -1,5 +1,6 @@
 import Classes.Config;
 import Classes.Input;
+import Classes.Log;
 import Classes.Maze;
 import Classes.Session;
 import Classes.Utils;
@@ -131,6 +132,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		System.out.println(Config.WELCOME + " " + Config.VERSION);
+		Log.insertLog(Log.INIT,"");
 		Input.toContinue();
 		
 		do { /* SE REPITE CONTINUAMENTE MIENTRAS NO SE PULSE 0 */
@@ -149,6 +151,7 @@ public class Main {
 			
 		} while (option!=0);
 		
+		Log.insertLog(Log.EXIT,"");
 		System.out.println(Config.GOODBYE);
 		
 	}

@@ -1,0 +1,2 @@
+30/04/2024 17:58:17 - [Inicio del Programa - [0;34m✅ -- Version Estable: 1.2.0 --[0m] - 
+30/04/2024 17:58:38 - [Final del Programa - [0;34m✅ -- Version Estable: 1.2.0 --[0m] - 

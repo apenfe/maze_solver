@@ -8,33 +8,18 @@ public class Log{
 	
 	private static final String LOG_NAME = "syslog.txt";
 	
-	private static final String INIT = "[Inicio del Programa - "+Config.VERSION+"]"; 
-	private static final String EXIT = "[Final del Programa - "+Config.VERSION+"]"; 
-	private static final String LOGIN = "syslog.txt"; 
-	private static final String SIGNUP = "syslog.txt"; 
-	private static final String LOGOUT = "syslog.txt"; 
-	
-	/*
-	 * Inicio de programa ***
-	 * Registro exitoso (al menos nombre de usuario. Nunca la contraseña)
-	 * Registro fallido (al menos nombre de usuario. Nunca la contraseña)
-	 * Login exitoso (nombre de usuario)
-	 * Login fallido (nombre de usuario)
-	 * Cargar laberinto (nombre del archivo)
-	 * Mostrar laberinto (nombre del archivo)
-	 * Error mostrar laberinto (motivo: no se ha cargado laberinto)
-	 * Establecer casillas con éxito (valores de las coordenadas)
-	 * Establecer casillas con error (valores de las coordenadas)
-	 * Error establecer casillas (motivo: no se ha cargado laberinto)
-	 * Acceder a la selección buscar caminos
-	 * Error acceder a la selección buscar caminos (motivo: no se ha cargado laberinto o no hay casillas)
-	 * Resolver primer camino (éxito o sin solución + cantidad de pasos)
-	 * Resolver camino más corto (éxito o sin solución + cantidad de pasos)
-	 * Mostrar el usuario actual (nombre de usuario + id)
-	 * Cerrar sesión (nombre de usuario)
-	 * Finalizar programa ***
-	 */
-	
+	public static final String INIT = "[Inicio del Programa - "+Config.VERSION+"]"; 
+	public static final String EXIT = "[Final del Programa - "+Config.VERSION+"]"; 
+	public static final String LOGIN = "[Evento login]"; 
+	public static final String SIGNUP = "[Evento de registro]"; 
+	public static final String LOGOUT = "[Evento logout]"; 
+	public static final String MAZE_IN_OUT = "[Casillas Laberinto]"; 
+	public static final String SHOW_MAZE = "[Visualizacion laberinto]"; 
+	public static final String CHARGE_MAZE = "[Cargar laberinto]"; 
+	public static final String FIND_PATH = "[Solucionar laberinto]";
+	public static final String USER = "[Datos usuario]";
+	public static final String FIRST_WAY = "[Primer camino]";
+	public static final String SHORTER_WAY = "[Camino mas corto]";
 	
 	/*
 	 * El programa deberá ser capaz de escribir sobre ese fichero y crearlo si no existiera
