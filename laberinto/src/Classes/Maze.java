@@ -196,6 +196,7 @@ public class Maze{
 				return;
 			}else if(num>=1 && num<=mazeNames.size()) {
 				file+=mazeNames.get(num-1);
+				Log.insertLog(Log.CHARGE_MAZE,"Lanerinto: "+file);
 				break;
 			}else {
 				System.out.println(Config.RED+"\tDebe Seleccionar una opcion entre [0-"+mazeNames.size()+"]: "+Config.RESET);
@@ -353,6 +354,8 @@ public class Maze{
 			}
 
 			System.out.println();
+			Log.insertLog(Log.SHOW_MAZE,"Lanerinto: "+fileName);
+
 		}
 
 	}

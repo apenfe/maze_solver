@@ -190,7 +190,7 @@ public class Main {
 			}else {
 				
 				System.out.println("\n\tDebe de cargar un laberinto para poder visualizarlo.");
-				
+				Log.insertLog(Log.SHOW_MAZE,"ERROR: No se ha cargado el laberinto.");
 			}
 			
 			Input.toContinue();
@@ -205,7 +205,7 @@ public class Main {
 			}else {
 				
 				System.out.println("\n\tDebe de cargar un laberinto para poder establecer entrada y salida.");
-
+				Log.insertLog(Log.SHOW_MAZE,"ERROR: No se ha cargado el laberinto.");
 			}
 			
 			Input.toContinue();
@@ -215,12 +215,14 @@ public class Main {
 			if(currentMaze.isLoaded() && currentMaze.inOutNotZero()) {
 				
 				System.out.println("\t"+Config.SOLVE_MAZE);
+				Log.insertLog(Log.FIND_PATH,"Acceso menu algoritmos");
 				solveMazeOptions();
 				
 			}else {
 				
 				System.out.println("\n\tDebe de cargar un laberinto para poder calcular una solución y establecer entrada y salida.");
-				
+				Log.insertLog(Log.SHOW_MAZE,"ERROR: No se ha cargado el laberinto.");
+
 			}
 			
 			Input.toContinue();

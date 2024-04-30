@@ -128,11 +128,13 @@ public class Session{
 			
 			System.out.println(Config.GREEN+"\tLogin Correcto: Bienvenido "+userdata[0]+"."+Config.RESET);
 			this.logged=true;
+			Log.insertLog(Log.LOGIN,"Login exitodo: "+userdata[0]);
 
 		} else {
 			
 			this.currentUser=new User();
 			System.out.println(Config.RED+"\t\tNombre de usuario y/o contraseña incorrectos."+Config.RESET);
+			Log.insertLog(Log.LOGIN,"Login fallido: "+userdata[0]);
 		}
 
 	}
@@ -164,11 +166,12 @@ public class Session{
 			if(db.signup(newUser, userdata[3])) {
 					
 				System.out.println(Config.GREEN+"\t\tUsuario añadido de forma correcta."+Config.RESET);
-
+				Log.insertLog(Log.SIGNUP,"Registro exitoso: "+userdata[0]);
+				
 			}else {
 					
 				System.out.println(Config.RED+"\t\tError al guardar usuario."+Config.RESET);
-
+				Log.insertLog(Log.SIGNUP,"Registro fallido: "+userdata[0]);
 			}
 				
 		}
@@ -201,6 +204,7 @@ public class Session{
 		if(Utils.confirmExit("\n\t¿Seguro que desea cerrar la sesión? SI - s ","S")) { // PIDE CONFIRMACION ANTES DE CERRAR SESION
 			System.out.println("\n\tHasta la proxima " + currentUser.username + ".");
 			System.out.println("\tSESION CERRADA");
+			Log.insertLog(Log.LOGOUT,currentUser.username);
 			logged=false; // SE PONE A FALSE PARA VOLVER A MENU INICIAL
 			this.currentUser= new User(); // EL USUARIO SE PONE A NULL
 		}

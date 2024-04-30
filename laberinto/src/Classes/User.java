@@ -158,7 +158,8 @@ public class User{
 		System.out.println("\t- Dirección postal: [" + this.addres + "]");
 		System.out.println("\t- Fecha de nacimiento: [" + Utils.formatDateEU(birthdate) + "] ---> " + Utils.getAge(birthdate)+ " años.");
 		System.out.println("\t- Tipo de rol / permisos: [" + this.role + "]");
-	
+		Log.insertLog(Log.USER,"Usuario: "+this.username+", ID: "+this.id);
+		
 	}
 
 }

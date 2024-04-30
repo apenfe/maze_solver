@@ -1,2 +1,8 @@
 30/04/2024 17:58:17 - [Inicio del Programa - [0;34m✅ -- Version Estable: 1.2.0 --[0m] - 
 30/04/2024 17:58:38 - [Final del Programa - [0;34m✅ -- Version Estable: 1.2.0 --[0m] - 
+30/04/2024 19:19:52 - [Inicio del Programa - [0;34m✅ -- Version Estable: 1.2.0 --[0m] - 
+30/04/2024 19:20:09 - [Evento login] - Login exitodo: @apenfe
+30/04/2024 19:20:17 - [Cargar laberinto] - Lanerinto: laberinto1.txt
+30/04/2024 19:20:23 - [Datos usuario] - Usuario: @apenfe, ID: 1
+30/04/2024 19:20:31 - [Evento logout] - @apenfe
+30/04/2024 19:20:35 - [Final del Programa - [0;34m✅ -- Version Estable: 1.2.0 --[0m] - 
