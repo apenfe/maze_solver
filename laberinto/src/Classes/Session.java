@@ -322,10 +322,7 @@ public class Session{
 	public void changeUserData() {
 		
 		System.out.println(Config.USER);
-		/*
-				+"\t[3] - CAMBIAR NIF\n"
-				+"\t[4] - CAMBIAR EMAIL\n"
-		*/
+	
 		int option = -1;
 		
 		do {
@@ -403,9 +400,66 @@ public class Session{
 					
 			}else if(option == 3) {
 				
+				String nif = Input.getString("\tIntroduzca un nuevo NIF: ");
+				
+				if(!Utils.validateNif(nif)) {
+							
+					System.out.println(Config.RED+"\t\tFormato de NIF incorrecto."+Config.RESET);
+
+				}else {
+					
+					if(db.checkField("nif",nif)) { // COMPRUEBA QUE SEAN UNICAS LAS PK
+						
+						System.out.println(Config.RED+"\n\t\tLos datos no son unicos en la base de datos."+Config.RESET);
+					
+					}else {
+						
+						if(db.changeOneData(currentUser.id,"nif",nif)) {
+							
+							System.out.println("NIF cambiado correctamente");
+							currentUser.setNif(nif);
+							
+						}else {
+							
+							System.out.println("error al cambiar NIF");
+
+						}
+						
+					}
+					
+				}
+				
 					
 			}else if(option == 4) {
 				
+				String email = Input.getString("\tIntroduzca un nuevo email: ");
+				
+				if(!Utils.validateEmail(email)) {
+							
+					System.out.println(Config.RED+"\t\tFormato de Email incorrecto."+Config.RESET);
+
+				}else {
+					
+					if(db.checkField("email",email)) { // COMPRUEBA QUE SEAN UNICAS LAS PK
+						
+						System.out.println(Config.RED+"\n\t\tLos datos no son unicos en la base de datos."+Config.RESET);
+					
+					}else {
+						
+						if(db.changeOneData(currentUser.id,"email",email)) {
+							
+							System.out.println("Email cambiado correctamente");
+							currentUser.setEmail(email);
+							
+						}else {
+							
+							System.out.println("error al cambiar email");
+
+						}
+						
+					}
+					
+				}
 					
 			}else if(option == 5) {
 				
@@ -431,12 +485,12 @@ public class Session{
 						
 				}else {
 					
-					date = Utils.formatDateSQL(date);
+					String date2 = Utils.formatDateSQL(date);
 					
-					if(db.changeOneData(currentUser.id,"birthdate",date)) {
+					if(db.changeOneData(currentUser.id,"birthdate",date2)) {
 						
 						System.out.println("Fecha de nacimiento cambiada correctamente");
-						currentUser.setBirthdate(Utils.formatDateEU(date));
+						currentUser.setBirthdate(date2);
 						
 					}else {
 						

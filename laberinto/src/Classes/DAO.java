@@ -242,4 +242,42 @@ public class DAO{
 		
 	}
 	
+	public boolean checkField(String colum, String data) {
+		
+		boolean check = false;
+		
+		try {
+
+			Connection conn = DriverManager.getConnection(URL, USER, PASS);
+			Statement stmt = conn.createStatement();
+
+			String consulta = "SELECT * FROM user WHERE "+colum+" = '"+data+"';";
+			ResultSet rs = stmt.executeQuery(consulta);
+
+			int i = 0;
+			
+			while (rs.next()) {
+
+				i++;
+
+			}
+			
+			if(i>0) {
+				check = true;
+			}
+
+			rs.close();
+			stmt.close();
+			conn.close();
+
+		} catch (Exception e) {
+
+			check = false;
+
+		}
+		
+		return check;
+		
+	}
+	
 }
