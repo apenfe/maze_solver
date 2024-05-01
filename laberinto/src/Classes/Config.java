@@ -132,10 +132,9 @@ public class Config{
 			+"\t[4] - CAMBIAR EMAIL\n"
 			+"\t[5] - CAMBIAR DIRECCION\n"
 			+"\t[6] - CAMBIAR FECHA NACIMIENTO\n"
-			+"\t[7] - CAMBIAR TODOS LOS DATOS\n"
-			+"\t[8] - ELIMINAR USUARIO\n"
+			+"\t[7] - ELIMINAR USUARIO\n"
 			+"\t[0] - SALIR\n"
-			+"\tSeleccione una opcion [0-8]: ";
+			+"\tSeleccione una opcion [0-7]: ";
 	
 	/**
 	 * Campo estático que permite mostrar la cabecera del método login.

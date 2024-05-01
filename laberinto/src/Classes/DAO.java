@@ -173,7 +173,7 @@ public class DAO{
 		
 	}
 	
-	public boolean changeOneData(String id, String colum, String data) {
+	public boolean changeOneData(int id, String colum, String data) {
 		
 		try {
 
@@ -181,6 +181,52 @@ public class DAO{
 			Statement stmt = conn.createStatement();
 
 			String consulta = "UPDATE user SET "+colum+" = '"+data+"' WHERE id = "+id+";";
+			stmt.executeUpdate(consulta);
+
+			stmt.close();
+			conn.close();
+			
+			return true;
+
+		} catch (Exception e) {
+
+			return false;
+				
+		}
+		
+	}
+	
+	public boolean changeOneData(int id, String colum, int data) {
+		
+		try {
+
+			Connection conn = DriverManager.getConnection(URL, USER, PASS);
+			Statement stmt = conn.createStatement();
+
+			String consulta = "UPDATE user SET "+colum+" = "+data+" WHERE id = "+id+";";
+			stmt.executeUpdate(consulta);
+
+			stmt.close();
+			conn.close();
+			
+			return true;
+
+		} catch (Exception e) {
+
+			return false;
+				
+		}
+		
+	}
+	
+	public boolean deleteUser(int id) {
+		
+		try {
+
+			Connection conn = DriverManager.getConnection(URL, USER, PASS);
+			Statement stmt = conn.createStatement();
+
+			String consulta = "DELETE FROM user WHERE id = "+id+";";
 			stmt.executeUpdate(consulta);
 
 			stmt.close();

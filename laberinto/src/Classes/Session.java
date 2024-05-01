@@ -325,9 +325,6 @@ public class Session{
 		/*
 				+"\t[3] - CAMBIAR NIF\n"
 				+"\t[4] - CAMBIAR EMAIL\n"
-				+"\t[6] - CAMBIAR FECHA NACIMIENTO\n"
-				+"\t[7] - CAMBIAR TODOS LOS DATOS\n"
-				+"\t[8] - ELIMINAR USUARIO\n"
 		*/
 		int option = -1;
 		
@@ -361,7 +358,7 @@ public class Session{
 						
 						if(check.equals(password)) {
 							
-							if(db.changeOneData(""+currentUser.id,"password",Utils.encryptMd5(check))) {
+							if(db.changeOneData(currentUser.id,"password",Utils.encryptMd5(check))) {
 								
 								System.out.println("Contraseña cambiada correctamente");
 								
@@ -390,9 +387,10 @@ public class Session{
 				
 				}else {
 					
-					if(db.changeOneData(""+currentUser.id,"name","'"+name+"'")) {
+					if(db.changeOneData(currentUser.id,"name",name)) {
 						
 						System.out.println("Nombre cambiado correctamente");
+						currentUser.setName(name);
 						
 					}else {
 						
@@ -413,9 +411,10 @@ public class Session{
 				
 				String address = Input.getString("\tIntroduzca una dirección postal: ");
 				
-				if(db.changeOneData(""+currentUser.id,"address","'"+address+"'")) {
+				if(db.changeOneData(currentUser.id,"address",address)) {
 					
 					System.out.println("Direccion postal cambiada correctamente");
+					currentUser.setAddres(address);
 					
 				}else {
 					
@@ -425,16 +424,60 @@ public class Session{
 					
 			}else if(option == 6) {
 				
+				String date = Input.getString("\tIntroduzca su nueva fecha de nacimiento (DD/MM/AA): "); 
+				if(!Utils.validateDate(date)) {
+						
+					System.out.println(Config.RED+"\t\tFormato de fecha no valido."+Config.RESET);
+						
+				}else {
+					
+					date = Utils.formatDateSQL(date);
+					
+					if(db.changeOneData(currentUser.id,"birthdate",date)) {
+						
+						System.out.println("Fecha de nacimiento cambiada correctamente");
+						currentUser.setBirthdate(Utils.formatDateEU(date));
+						
+					}else {
+						
+						System.out.println("error al cambiar la fecha de nacimiento");
+
+					}
+					
+				}
+				
 					
 			}else if(option == 7) {
 				
-					
-			}else if(option == 8) {
+				String password = Utils.encryptMd5(Input.getString("Inserte la contraseña actual: "));
 				
+				if(db.checkPassword(currentUser.username,password)) {
+					
+					if(db.deleteUser(currentUser.id)) {
+						
+						System.out.println(Config.LOGOUT);
+						
+						System.out.println("\n\tSESION CERRADA");
+						System.out.println("\tUSUARIO ELIMINADO");
+						logged=false; // SE PONE A FALSE PARA VOLVER A MENU INICIAL
+						this.currentUser= new User(); // EL USUARIO SE PONE A NULL
+						break;
+						
+					}else {
+						
+						System.out.println("No se ha podido eliminar el usuario");
+						
+					}
+					
+				}else {
+					
+					System.out.println("Contraseña incorrecta.");
+					
+				}
 					
 			}else {
 				
-				System.out.println("\n\tSeleccione una opción válida entre [0-8]");
+				System.out.println("\n\tSeleccione una opción válida entre [0-7]");
 				Input.toContinue();
 				
 			}
