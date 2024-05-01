@@ -137,4 +137,63 @@ public class DAO{
 		
 	}
 	
+	public boolean checkPassword(String username, String password) {
+
+		boolean exit = false;
+		
+		try {
+
+			Connection conn = DriverManager.getConnection(URL, USER, PASS);
+			Statement stmt = conn.createStatement();
+
+			String consulta = "SELECT username FROM user WHERE username = '" + username + "' AND password = '" + password + "';";
+			ResultSet rs = stmt.executeQuery(consulta);
+
+			while (rs.next()) {
+					
+				if(rs.getString("username").equals(username)) {
+						
+					exit = true;
+						
+				}
+					
+			}
+
+			rs.close();
+			stmt.close();
+			conn.close();
+			
+			return exit;
+
+		} catch (Exception e) {
+
+			return exit;
+				
+		}
+		
+	}
+	
+	public boolean changeOneData(String id, String colum, String data) {
+		
+		try {
+
+			Connection conn = DriverManager.getConnection(URL, USER, PASS);
+			Statement stmt = conn.createStatement();
+
+			String consulta = "UPDATE user SET "+colum+" = '"+data+"' WHERE id = "+id+";";
+			stmt.executeUpdate(consulta);
+
+			stmt.close();
+			conn.close();
+			
+			return true;
+
+		} catch (Exception e) {
+
+			return false;
+				
+		}
+		
+	}
+	
 }

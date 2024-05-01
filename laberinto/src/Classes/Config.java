@@ -109,8 +109,9 @@ public class Config{
 											+"[4] - BUSCAR CAMINOS\n"
 											+"[5] - VER USUARIO ACTUAL\n"
 											+"[6] - CERRAR SESION\n"
+											+"[7] - CAMBIAR DATOS DE USUARIO\n"
 											+"[0] - SALIR\n\n"
-											+"Seleccione una opcion [0-6]: ";
+											+"Seleccione una opcion [0-7]: ";
 	
 	/**
 	 * Campo estático que permite mostrar el menu de opciones de resolución de laberintos.
@@ -120,6 +121,21 @@ public class Config{
 			+"\t[2] - BUSCAR LA RUTA MAS CORTA\n"
 			+"\t[0] - SALIR\n"
 			+"\tSeleccione una opcion [0-2]: ";
+	
+	/**
+	 * Campo estático que permite mostrar el menu de opciones de cambiar datos user.
+	 */
+	public static final String CHANGE_USER_DATA = "\n\t------------------- MUENU -------------------\n"
+			+"\t[1] - CAMBIAR CONTRASEÑA\n"
+			+"\t[2] - CAMBIAR NOMBRE\n"
+			+"\t[3] - CAMBIAR NIF\n"
+			+"\t[4] - CAMBIAR EMAIL\n"
+			+"\t[5] - CAMBIAR DIRECCION\n"
+			+"\t[6] - CAMBIAR FECHA NACIMIENTO\n"
+			+"\t[7] - CAMBIAR TODOS LOS DATOS\n"
+			+"\t[8] - ELIMINAR USUARIO\n"
+			+"\t[0] - SALIR\n"
+			+"\tSeleccione una opcion [0-8]: ";
 	
 	/**
 	 * Campo estático que permite mostrar la cabecera del método login.

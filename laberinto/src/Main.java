@@ -243,6 +243,11 @@ public class Main {
 			
 			Input.toContinue();
 			
+		}else if(option==7) { // METODO MODIFICACION DATOS USUARIO
+			
+			currentSession.changeUserData();
+			Input.toContinue();
+			
 		}
 		
 	}

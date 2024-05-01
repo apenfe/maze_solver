@@ -360,7 +360,7 @@ public class Maze{
 			}
 
 			System.out.println();
-			Log.insertLog(Log.SHOW_MAZE,"Lanerinto: "+fileName);
+			//Log.insertLog(Log.SHOW_MAZE,"Lanerinto: "+fileName);
 
 		}
 
@@ -648,7 +648,7 @@ public class Maze{
 			
 		}
 		
-		Log.insertLog(Log.SHORTER_WAY,exit+" Numero de pasos: "+path.size());
+		Log.insertLog(Log.FIRST_WAY,exit+" Numero de pasos: "+path.size());
 		
 		time(inicio);
 
@@ -749,17 +749,21 @@ public class Maze{
 		
 		goAheadAllWays(startI, startJ, path2,maze);
 		String exit ="";
+		int steps;
+		
 		if(this.find) { 
 			exit="exito";
 			printPath();
 			showMaze();
+			steps=path.size();
 			
 		}else {
 			exit="fracaso";
+			steps=0;
 			System.out.println(Config.RED+"\n\tNo hay ninguna solución posible."+Config.RESET);
 		}
 		
-		Log.insertLog(Log.SHORTER_WAY,exit+" Numero de pasos: "+path.size());
+		Log.insertLog(Log.SHORTER_WAY,exit+" Numero de pasos: "+steps);
 		
 		time(inicio);
 

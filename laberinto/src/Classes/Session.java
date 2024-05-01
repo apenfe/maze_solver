@@ -318,5 +318,129 @@ public class Session{
 		return true;
 		
 	}
+
+	public void changeUserData() {
+		
+		System.out.println(Config.USER);
+		/*
+				+"\t[3] - CAMBIAR NIF\n"
+				+"\t[4] - CAMBIAR EMAIL\n"
+				+"\t[6] - CAMBIAR FECHA NACIMIENTO\n"
+				+"\t[7] - CAMBIAR TODOS LOS DATOS\n"
+				+"\t[8] - ELIMINAR USUARIO\n"
+		*/
+		int option = -1;
+		
+		do {
+			
+			option = Input.getInt(Config.CHANGE_USER_DATA, false);
+			
+			if(option == 0) {
+				
+				if(Utils.confirmExit()) {
+					break;
+				}else {
+					option = -1;
+				}
+				
+			}else if(option == 1) {
+				
+				String password = Utils.encryptMd5(Input.getString("Inserte la contraseña actual: "));
+				
+				if(db.checkPassword(currentUser.username,password)) {
+					
+					password = Input.getString("\tIntroduzca una nueva contraseña: ");
+					
+					if(!Utils.validatePassword(password)) {
+				
+						System.out.println(Config.RED+"\t\tContraseña no valida."+Config.RESET);
+							
+					}else {
+						
+						String check = Input.getString("\tRepita la contraseña: ");
+						
+						if(check.equals(password)) {
+							
+							if(db.changeOneData(""+currentUser.id,"password",Utils.encryptMd5(check))) {
+								
+								System.out.println("Contraseña cambiada correctamente");
+								
+							}
+							
+						}else {
+							
+							System.out.println(Config.RED+"\t\tLa contraseña no es la misma."+Config.RESET);
+
+						}
+						
+					}
+					
+				}else {
+					
+					System.out.println("Contraseña incorrecta.");
+					
+				}
+					
+			}else if(option == 2) {
+				
+				String name = Input.getString("\tIntroduzca su nuevo nombre completo (Nombre completo y apellidos, comenzando en mayúsculas): ");
+				if(!Utils.validateName(name)) {
+						
+					System.out.println(Config.RED+"\t\tFormato de nombre no valido."+Config.RESET);
+				
+				}else {
+					
+					if(db.changeOneData(""+currentUser.id,"name","'"+name+"'")) {
+						
+						System.out.println("Nombre cambiado correctamente");
+						
+					}else {
+						
+						System.out.println("error al cambiar nombre");
+
+					}
+					
+				}
+				
+					
+			}else if(option == 3) {
+				
+					
+			}else if(option == 4) {
+				
+					
+			}else if(option == 5) {
+				
+				String address = Input.getString("\tIntroduzca una dirección postal: ");
+				
+				if(db.changeOneData(""+currentUser.id,"address","'"+address+"'")) {
+					
+					System.out.println("Direccion postal cambiada correctamente");
+					
+				}else {
+					
+					System.out.println("error al cambiar direccion postal");
+
+				}
+					
+			}else if(option == 6) {
+				
+					
+			}else if(option == 7) {
+				
+					
+			}else if(option == 8) {
+				
+					
+			}else {
+				
+				System.out.println("\n\tSeleccione una opción válida entre [0-8]");
+				Input.toContinue();
+				
+			}
+			
+		}while(true);
+				
+	}
 	
 }
