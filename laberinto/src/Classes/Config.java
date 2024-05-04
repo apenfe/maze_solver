@@ -150,6 +150,16 @@ public class Config{
 			+"\t[0] - SALIR\n"
 			+"\tSeleccione una opcion [0-7]: ";
 	
+	public static final String CHANGE_USER_DATA_ADMIN = RED+"\n\t------------------- MUENU -------------------\n"+RESET
+			+"\t[1] - CAMBIAR CONTRASEÑA\n"
+			+"\t[2] - CAMBIAR NOMBRE\n"
+			+"\t[3] - CAMBIAR NIF\n"
+			+"\t[4] - CAMBIAR EMAIL\n"
+			+"\t[5] - CAMBIAR DIRECCION\n"
+			+"\t[6] - CAMBIAR FECHA NACIMIENTO\n"
+			+"\t[0] - SALIR\n"
+			+"\tSeleccione una opcion [0-6]: ";
+	
 	/**
 	 * Campo estático que permite mostrar el menu de opciones de cambiar datos user.
 	 */
