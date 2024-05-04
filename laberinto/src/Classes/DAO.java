@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DAO{
 
-	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private static final String SERVER = "127.0.0.1";
 	private static final String PORT = "3306";
 	private static final String DATABASE = "maze";
@@ -15,30 +15,10 @@ public class DAO{
 	private static final String USER = "root";
 	private static final String PASS = "1234";
 	
-	/*
-	 * Se debe crear una clase llamada "DAO" la cual contendrá una serie de métodos los cuales provean 
-	 * a la clase Session los servicios de login, registro y comprobar usuario.
-	 * 
-	 * Los métodos básicos que deberá contener son:
-	 * 
-	 * login: Método público el cual recibirá un usuario y contraseña para lanzar la consulta contra la 
-	 * base de datos. Devolverá un objeto de tipo User si se ha encontrado el usuario, y un valor null 
-	 * si no se ha encontrado.
-	 * 
-	 * checkUser: Método público el cual recibirá un usuario para lanzar la consulta contra la base de datos. 
-	 * Devolverá valor true si se ha encontrado el usuario, y un valor false si no se ha encontrado.
-	 * 
-	 * signup: Método público el cual recibirá los datos del nuevo usuario para realizar una inserción en la 
-	 * base de datos. Devolverá un valor true si se ha realizado la inserción correctamente y un valor false 
-	 * si no se puede insertar.
-	 * 
-	 */
-	
 	public User login(String username, String password) {
 
 		try {
 
-			Class.forName(DRIVER);
 			Connection conn = DriverManager.getConnection(URL, USER, PASS);
 			Statement stmt = conn.createStatement();
 
@@ -78,7 +58,6 @@ public class DAO{
 		
 		try {
 
-			Class.forName(DRIVER);
 			Connection conn = DriverManager.getConnection(URL, USER, PASS);
 			Statement stmt = conn.createStatement();
 
@@ -117,7 +96,6 @@ public class DAO{
 			
 		try {
 
-			Class.forName(DRIVER);
 			Connection conn = DriverManager.getConnection(URL, USER, PASS);
 			Statement stmt = conn.createStatement();
 
@@ -277,6 +255,39 @@ public class DAO{
 		}
 		
 		return check;
+		
+	}
+	
+	public User[] listUsers() {
+		
+		ArrayList<User> users = new ArrayList<User>();
+		
+		try {
+
+			Connection conn = DriverManager.getConnection(URL, USER, PASS);
+			Statement stmt = conn.createStatement();
+
+			String consulta = "SELECT * FROM user;";
+			ResultSet rs = stmt.executeQuery(consulta);
+			
+			while (rs.next()) {
+
+				users.add(new User(rs.getString("id"),rs.getString("username"),rs.getString("name"),rs.getString("nif"),rs.getString("email"),rs.getString("address"),rs.getString("birthdate"),rs.getString("role")));
+
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+
+		} catch (Exception e) {
+
+			System.out.println(e);
+			return null;
+
+		}
+		
+		return users.toArray(new User[0]);
 		
 	}
 	

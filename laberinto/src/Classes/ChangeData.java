@@ -2,7 +2,7 @@ package Classes;
 
 public class ChangeData{
 
-	public static void changeUserData(Session currentSession) {
+	public static void changeUserData(Session currentSession, boolean admin, boolean delete) {
 		
 		System.out.println(Config.USER);
 	
@@ -20,7 +20,7 @@ public class ChangeData{
 					option = -1;
 				}
 				
-			}else if(option == 1) {
+			}else if(option == 1 && admin==false) {
 				
 				String password = Utils.encryptMd5(Input.getString("Inserte la contraseña actual: "));
 				
@@ -56,6 +56,34 @@ public class ChangeData{
 					
 					System.out.println("Contraseña incorrecta.");
 					
+				}
+					
+			}else if(option == 1 && admin==true) {
+					
+				String password = Input.getString("\tIntroduzca una nueva contraseña: ");
+					
+				if(!Utils.validatePassword(password)) {
+				
+					System.out.println(Config.RED+"\t\tContraseña no valida."+Config.RESET);
+							
+				}else {
+						
+					String check = Input.getString("\tRepita la contraseña: ");
+						
+					if(check.equals(password)) {
+							
+						if(currentSession.db.changeOneData(currentSession.currentUser.id,"password",Utils.encryptMd5(check))) {
+								
+							System.out.println("Contraseña cambiada correctamente");
+								
+						}
+							
+					}else {
+							
+						System.out.println(Config.RED+"\t\tLa contraseña no es la misma."+Config.RESET);
+
+					}
+						
 				}
 					
 			}else if(option == 2) {
@@ -184,7 +212,7 @@ public class ChangeData{
 				}
 				
 					
-			}else if(option == 7) {
+			}else if(option == 7 && admin==false) {
 				
 				String password = Utils.encryptMd5(Input.getString("Inserte la contraseña actual: "));
 				
@@ -210,6 +238,19 @@ public class ChangeData{
 					
 					System.out.println("Contraseña incorrecta.");
 					
+				}
+					
+			}else if(option == 7 && admin==true && delete==true) {
+					
+				if(currentSession.db.deleteUser(currentSession.currentUser.id)) {
+						
+					System.out.println("\tUSUARIO ELIMINADO");
+					break;
+						
+				}else {
+						
+					System.out.println("No se ha podido eliminar el usuario");
+						
 				}
 					
 			}else {

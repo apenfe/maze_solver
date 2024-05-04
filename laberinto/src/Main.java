@@ -262,7 +262,7 @@ public class Main {
 				
 			}else {
 				
-				ChangeData.changeUserData(currentSession);
+				ChangeData.changeUserData(currentSession,false,false);
 				
 			}
 			

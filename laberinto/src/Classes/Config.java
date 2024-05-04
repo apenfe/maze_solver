@@ -116,14 +116,14 @@ public class Config{
 	/**
 	 * Campo estático que permite mostrar el menu de opciones de usuarios logueados.
 	 */
-	public static final String LOGGED_ADMIN_MENU = "\n------------------- MUENU -------------------\n"
+	public static final String LOGGED_ADMIN_MENU = RED+"\n------------------- MUENU ADMIN-------------------\n"+RESET
 											+"[1] - CARGAR LABERINTO\n"
 											+"[2] - VER LABERINTO ACTUAL\n"
 											+"[3] - ESTABLECER CASILLAS DE ENTRADA Y SALIDA\n"
 											+"[4] - BUSCAR CAMINOS\n"
 											+"[5] - VER USUARIO ACTUAL\n"
 											+"[6] - CERRAR SESION\n"
-											+"[7] - GESTION DE USUARIOS\n"
+											+YELLOW+"[7] - GESTION DE USUARIOS\n"+RESET
 											+"[0] - SALIR\n\n"
 											+"Seleccione una opcion [0-7]: ";
 	
@@ -153,13 +153,13 @@ public class Config{
 	/**
 	 * Campo estático que permite mostrar el menu de opciones de cambiar datos user.
 	 */
-	public static final String ADMIN_USER_DATA = "\n\t------------------- MUENU -------------------\n"
-			+"\t[1] - CREAR USUARIO\n"
+	public static final String ADMIN_USER_DATA = RED+"\n\t------------------- MUENU ADMIN -------------------\n"+RESET
+			+PURPLE+"\t\t[1] - CREAR USUARIO\n"
 			+"\t[2] - VER USUARIOS\n"
 			+"\t[3] - CAMBIAR USUARIOS\n"
 			+"\t[4] - BORRAR USUARIO\n"
 			+"\t[0] - SALIR\n"
-			+"\tSeleccione una opcion [0-4]: ";
+			+"\tSeleccione una opcion [0-4]: "+RESET;
 	
 	/**
 	 * Campo estático que permite mostrar la cabecera del método login.
