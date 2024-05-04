@@ -77,13 +77,13 @@ public class Session{
 	/**
 	 * Usuario asignado a la sesión actual.
 	 */
-	private User currentUser;
-	private DAO db;
+	protected User currentUser;
+	protected DAO db;
 	
 	/**
 	 * boolean que nos permite conocer si el usuario se ha podido autenticar o no.
 	 */
-	private boolean logged;
+	protected boolean logged;
 	private static final String ERROR = Config.RED+"\n\tPor favor, corrija los campos indicados antes de continuar con el registro."+Config.RESET;
 	
 	/* LISTADO DE MÉTODOS DE LA CLASE */
@@ -188,6 +188,12 @@ public class Session{
 		
 		System.out.println(Config.USER);
 		currentUser.info();
+	}
+	
+	public boolean isAdmin() {
+		
+		return currentUser.role.equals("admin");
+		
 	}
 	
 	/* METODO PARA CERRAR LA SESION DEL USUARIO */

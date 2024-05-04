@@ -114,6 +114,20 @@ public class Config{
 											+"Seleccione una opcion [0-7]: ";
 	
 	/**
+	 * Campo estático que permite mostrar el menu de opciones de usuarios logueados.
+	 */
+	public static final String LOGGED_ADMIN_MENU = "\n------------------- MUENU -------------------\n"
+											+"[1] - CARGAR LABERINTO\n"
+											+"[2] - VER LABERINTO ACTUAL\n"
+											+"[3] - ESTABLECER CASILLAS DE ENTRADA Y SALIDA\n"
+											+"[4] - BUSCAR CAMINOS\n"
+											+"[5] - VER USUARIO ACTUAL\n"
+											+"[6] - CERRAR SESION\n"
+											+"[7] - GESTION DE USUARIOS\n"
+											+"[0] - SALIR\n\n"
+											+"Seleccione una opcion [0-7]: ";
+	
+	/**
 	 * Campo estático que permite mostrar el menu de opciones de resolución de laberintos.
 	 */
 	public static final String SOLVE_MAZE_MENU = "\n\t------------------- MUENU -------------------\n"
@@ -135,6 +149,17 @@ public class Config{
 			+"\t[7] - ELIMINAR USUARIO\n"
 			+"\t[0] - SALIR\n"
 			+"\tSeleccione una opcion [0-7]: ";
+	
+	/**
+	 * Campo estático que permite mostrar el menu de opciones de cambiar datos user.
+	 */
+	public static final String ADMIN_USER_DATA = "\n\t------------------- MUENU -------------------\n"
+			+"\t[1] - CREAR USUARIO\n"
+			+"\t[2] - VER USUARIOS\n"
+			+"\t[3] - CAMBIAR USUARIOS\n"
+			+"\t[4] - BORRAR USUARIO\n"
+			+"\t[0] - SALIR\n"
+			+"\tSeleccione una opcion [0-4]: ";
 	
 	/**
 	 * Campo estático que permite mostrar la cabecera del método login.
@@ -235,5 +260,14 @@ public class Config{
 			+ "     \\   \\    |  |  |  | |  |       \\      /   |   __|     |  |\\/|  |   /  /_\\  \\      /  /    |   __|  \r\n"
 			+ " .----)   |   |  `--'  | |  `----.   \\    /    |  |____    |  |  |  |  /  _____  \\    /  /----.|  |____ \r\n"
 			+ " |_______/     \\______/  |_______|    \\__/     |_______|   |__|  |__| /__/     \\__\\  /________||_______|\n"+RESET;
+	
+	public static final String ADMIN = RED+"\n    /$$$$$$  /$$$$$$$  /$$      /$$ /$$$$$$ /$$   /$$\r\n"
+			                               +"   /$$__  $$| $$__  $$| $$$    /$$$|_  $$_/| $$$ | $$\r\n"
+			                              +"  | $$  \\ $$| $$  \\ $$| $$$$  /$$$$  | $$  | $$$$| $$\r\n"
+			                              +"  | $$$$$$$$| $$  | $$| $$ $$/$$ $$  | $$  | $$ $$ $$\r\n"
+			                              +"  | $$__  $$| $$  | $$| $$  $$$| $$  | $$  | $$  $$$$\r\n"
+			                              +"  | $$  | $$| $$  | $$| $$\\  $ | $$  | $$  | $$\\  $$$\r\n"
+			                              +"  | $$  | $$| $$$$$$$/| $$ \\/  | $$ /$$$$$$| $$ \\  $$\r\n"
+			                              +"  |__/  |__/|_______/ |__/     |__/|______/|__/  \\__/\n"+RESET;
 
 }

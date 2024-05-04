@@ -1,3 +1,5 @@
+import Classes.AdminOptions;
+import Classes.ChangeData;
 import Classes.Config;
 import Classes.Input;
 import Classes.Log;
@@ -139,7 +141,16 @@ public class Main {
 			
 			if(currentSession.isLogged()) { /* SI EL USUARIO SE HA LOGGEADO */
 				
-				option = Input.getInt(Config.LOGGED_MENU, false);
+				if(currentSession.isAdmin()) {
+					
+					option = Input.getInt(Config.LOGGED_ADMIN_MENU, false);
+					
+				}else {
+					
+					option = Input.getInt(Config.LOGGED_MENU, false);
+					
+				}
+				
 				loggedOptions();
 
 			}else { /* SI EL USUARIO NO SE HA LOGGEADO */
@@ -245,12 +256,22 @@ public class Main {
 			
 		}else if(option==7) { // METODO MODIFICACION DATOS USUARIO
 			
-			currentSession.changeUserData();
+			if(currentSession.isAdmin()) {
+				
+				AdminOptions.menu();
+				
+			}else {
+				
+				ChangeData.changeUserData(currentSession);
+				
+			}
+			
 			Input.toContinue();
 			
 		}
 		
 	}
+	
 	
 	/* OPCIONES PARA USUARIOS NO REGISTRADOS */
 	

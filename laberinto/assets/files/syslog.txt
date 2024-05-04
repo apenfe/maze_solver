@@ -83,3 +83,34 @@
 01/05/2024 21:34:01 - [Evento logout] - @nombre
 01/05/2024 21:34:14 - [Evento login] - Login exitodo: @nombre
 01/05/2024 21:34:40 - [Evento login] - Login fallido: @nombre
+04/05/2024 10:41:56 - ---------------------------------------------------------
+[Inicio del Programa - [0;34m✅ -- Version Estable: 1.3.0 --[0m] - 
+04/05/2024 10:42:41 - [Evento login] - Login fallido: 12345678Aa*
+04/05/2024 10:42:52 - [Evento login] - Login exitodo: @apenfe
+04/05/2024 10:43:33 - [Datos usuario] - Usuario: @apenfe, ID: 1
+04/05/2024 10:43:59 - [Final del Programa - [0;34m✅ -- Version Estable: 1.3.0 --[0m] - 
+04/05/2024 10:44:01 - ---------------------------------------------------------
+[Inicio del Programa - [0;34m✅ -- Version Estable: 1.3.0 --[0m] - 
+04/05/2024 10:44:13 - [Evento login] - Login exitodo: @dmunuera
+04/05/2024 10:45:45 - [Datos usuario] - Usuario: @dmunuera, ID: 4
+04/05/2024 10:46:20 - [Evento login] - Login fallido: @dmunuera
+04/05/2024 11:08:37 - ---------------------------------------------------------
+[Inicio del Programa - [0;34m✅ -- Version Estable: 1.3.0 --[0m] - 
+04/05/2024 11:08:53 - [Evento login] - Login fallido: @apenfe
+04/05/2024 11:09:08 - [Evento login] - Login exitodo: @apenfe
+04/05/2024 11:09:12 - [Datos usuario] - Usuario: @apenfe, ID: 1
+04/05/2024 11:10:33 - [Final del Programa - [0;34m✅ -- Version Estable: 1.3.0 --[0m] - 
+04/05/2024 11:10:36 - ---------------------------------------------------------
+[Inicio del Programa - [0;34m✅ -- Version Estable: 1.3.0 --[0m] - 
+04/05/2024 11:10:48 - [Evento login] - Login exitodo: @root
+04/05/2024 11:20:53 - ---------------------------------------------------------
+[Inicio del Programa - [0;34m✅ -- Version Estable: 1.3.0 --[0m] - 
+04/05/2024 11:21:09 - [Evento login] - Login exitodo: @root
+04/05/2024 11:24:16 - ---------------------------------------------------------
+[Inicio del Programa - [0;34m✅ -- Version Estable: 1.3.0 --[0m] - 
+04/05/2024 11:24:28 - [Evento login] - Login exitodo: @root
+04/05/2024 11:25:44 - ---------------------------------------------------------
+[Inicio del Programa - [0;34m✅ -- Version Estable: 1.3.0 --[0m] - 
+04/05/2024 11:25:57 - [Evento login] - Login exitodo: @root
+04/05/2024 11:26:17 - [Evento logout] - @root
+04/05/2024 11:26:28 - [Evento login] - Login exitodo: @apenfe
