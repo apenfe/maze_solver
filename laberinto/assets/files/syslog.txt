@@ -178,3 +178,27 @@
 [Inicio del Programa - [0;34m✅ -- Version Estable: 1.3.0 --[0m] - 
 04/05/2024 23:52:29 - [Evento login] - Login exitodo: @root
 04/05/2024 23:53:12 - [Datos usuario] - Usuario: @apenfe, ID: 1
+05/05/2024 00:12:49 - ---------------------------------------------------------
+[Inicio del Programa - [0;34m✅ -- Version Estable: 1.4.0 --[0m] - 
+05/05/2024 00:13:06 - [Evento login] - Login exitodo: @apenfe
+05/05/2024 00:13:13 - [Cargar laberinto] - Lanerinto: laberinto2.txt
+05/05/2024 00:13:18 - [Casillas Laberinto] - Casilla de entrada establecida --> 1 1
+05/05/2024 00:13:22 - [Casillas Laberinto] - Casilla de salida establecida --> 19 19
+05/05/2024 00:13:27 - [Solucionar laberinto] - Acceso menu algoritmos
+05/05/2024 00:13:29 - [Primer camino] - exito Numero de pasos: 44
+05/05/2024 00:13:32 - [Camino mas corto] - exito Numero de pasos: 44
+05/05/2024 00:18:58 - ---------------------------------------------------------
+[Inicio del Programa - [0;34m✅ -- Version Estable: 1.4.0 --[0m] - 
+05/05/2024 00:19:11 - [Evento login] - Login exitodo: @apenfe
+05/05/2024 00:19:17 - [Cargar laberinto] - Lanerinto: laberinto2.txt
+05/05/2024 00:19:45 - [Casillas Laberinto] - Casilla de entrada establecida --> 1 1
+05/05/2024 00:20:12 - [Casillas Laberinto] - Casilla de salida establecida --> 19 19
+05/05/2024 00:20:24 - [Solucionar laberinto] - Acceso menu algoritmos
+05/05/2024 00:20:33 - [Primer camino] - exito Numero de pasos: 44
+05/05/2024 00:20:44 - [Final del Programa - [0;34m✅ -- Version Estable: 1.4.0 --[0m] - 
+05/05/2024 18:09:16 - ---------------------------------------------------------
+[Inicio del Programa - [0;34m✅ -- Version Estable: 1.4.0 --[0m] - 
+05/05/2024 18:09:39 - [Evento login] - Login exitodo: @root
+05/05/2024 18:10:16 - [Datos usuario] - Usuario: @apenfe, ID: 1
+05/05/2024 18:10:55 - [Datos usuario] - Usuario: @root, ID: 8
+05/05/2024 18:11:00 - [Final del Programa - [0;34m✅ -- Version Estable: 1.4.0 --[0m] - 

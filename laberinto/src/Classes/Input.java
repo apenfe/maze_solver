@@ -1,4 +1,4 @@
-package Classes; /* SE PONE PARA INDICAR EN QUE CARPETA ESTÁ, SI ES EN LA CARPETA PRINCIPAL NO HACE FALTA */
+package Classes;
 
 /* 
  * Input.java
@@ -8,22 +8,12 @@ package Classes; /* SE PONE PARA INDICAR EN QUE CARPETA ESTÁ, SI ES EN LA CARPE
  * Se usa para obtener datos introducidos por el usuario a traves de la consola.
  * Para ello hace uso de un objeto Scanner.
  * 
- * APF - 21-12-2023
- * VERSION: 0.1.0
+ * APF - 05-05-2024
+ * VERSION: 1.4.0
  * 
  */
 
 import java.util.Scanner;
-
-/**
- * Clase Input utilizada para recibir datos por entrada de teclado.
- * 
- * Compuesta por varios métodos públicos y estatáticos.
- * 
- * @author dmunuera
- * @version 1.0.0
- * 
- */
 
 public class Input {
 	

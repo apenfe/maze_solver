@@ -1,72 +1,11 @@
 package Classes;
 
-/* 
- * Session.java
- * 
- * Esta clase contendrá cuatro atributos básicos:
- * 
- * user: "Será de tipo User y se usará para establecer en él la información del usuario que inicia sesión."
- * logged: "Propiedad de tipo booleana que contendrá el valor true si se ha iniciado sesión y false si no ha
- * iniciado sesión o se ha cerrado sesión. Cuando se cree un objeto de este tipo en el programa principal, se
- * inicializará con el valor false."
- * FILE_PATH: "Atributo constante que contiene la ruta dónde se encontrará el fichero con los usuarios para el login y registro"
- * USERS_FILE: "Atributo contante que contiene el nombre del fichero .txt que contendrá el listado de usuarios y su información"
- * 
- * Esta clase también contendrá una serie de métodos básicos:
- * 
- * (CONSTRUCTOR DE LA CLASE): "Simplemente inicializa la propiedad logged con el valor false. No recibe ningún parámetro".
- * Además de crear un nuevo ubjetos de la clase User.
- * 
- * login: "Se encargará de solicitar usuario y contraseña para iniciar sesión y controlar si se ha iniciado sesión correctamente o no".
- * 
- * signup: "Se encarga de solicitar los datos de registro para escribir en el fichero de usuarios el nuevo usuario. Deberá 
- * comprobar si el nombre de usuario ya existe o no, ya que no pueden repetirse".
- * 
- * isLogged: "Solamente devuelve el valor del atributo logged. Se utilizará en el programa principal para saber si hay o no
- * una sesión iniciada, para mostrar un menú u otro".
- *  
- * showUser: "Este método únicamente mostrará por pantalla la información del usuario con sesión iniciada".
- * 
- * logout: "Este método es el encargado de cerrar sesión, estableciendo la propiedad logged a false y limpiando cualquier
- * información almacenada en la propiedad user".
- *  
- * Todos los métodos indicados deben ser públicos; el resto de métodos adicionales que se irán creando según necesidad,
- * serán privados y serviran para hacer el programa más limpio y modular.
- * 
- * El resto de metodos (private) utilizados son:
- * 
- * primaryKey
- * secondaryKey
- * createUser
- * trowQuery
- * 
- * APF - 21-12-2023
- * VERSION: 0.1.0
- * 
- */
-
-/* 
- * Session.java
- * 
- * Se añaden mejoras:
- * 
- * En login, solo se permite un intento.
- * 
- * En signup, se comprueba primeramente que el nombre de usuario sea unico.
- * 
- * APF - 31-01-2024
- * VERSION: 0.2.0
- * 
- */
-
-
-
 /**
  * Clase Session utilizada para realizar todas las acciones del usuario durante una sesión,
  * asi como permitir que el usuario pueda registrarse o autenticarse.
  * 
  * @author Adrián Peñalver Fernández
- * @version 1.0.0
+ * @version 1.4.0
  * 
  */
 

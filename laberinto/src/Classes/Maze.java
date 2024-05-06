@@ -1,83 +1,5 @@
 package Classes;
 
-/*
- * Maze.java
- * 
- * Esta clase contendrá, las siguientes propiedades:
- * 
- * map: Se trata de una matriz de 2 dimensiones de char. En esta matriz se almacenarán los caracteres leídos
- * de cada fichero de laberintos.
- * 
- * filename: Propiedad de tipo texto que contiene el nombre del fichero del laberinto que se ha cargado en el programa.
- * 
- * loaded: Propiedad booleana que inicialmente estará con valor false y se pondrá con valor true cuando se haya cargado 
- * correctamente un laberinto en el programa. Esto controlará que no se pueda mostrar ningún laberinto ni establecer las 
- * casillas de inicio y fin hasta que no se haya cargado previamente un laberinto.
- * 
- * startI: Propiedad numérica que contiene la coordenada I de la casilla de inicio.
- * 
- * startJ: Propiedad numérica que contiene la coordenada J de la casilla de inicio.
- * 
- * endI: Propiedad numérica que contiene la coordenada I de la casilla de fin.
- * 
- * endJ: Propiedad numérica que contiene la coordenada J de la casilla de fin.
- * 
- * Métodos de la Clase Maze:
- * 
- * loadMaze(): Método público que se encargará pedir a usuario un fichero a cargar con el laberinto. Se recomienda hacer 
- * métodos privados que realicen partes de toda esta funcionalidad para hacer más sencillo su mantenimiento.
- * 
- * showMaze(): Método público encargado de mostrar en pantalla la matriz con el laberinto que se ha cargado en el programa. 
- * Además, debe mostrar los números de filas y columnas, por lo que se debe reservar los márgenes necesarios de cada línea 
- * para que el laberinto se muestre correctamente. Nota: Los números de columnas se deben escribir en vertical en lugar de 
- * horizontal, para que se ajusten a la posición de cada columna de caracteres. Otro punto a tener en cuenta es que, si se 
- * ha cargado el laberinto, pero no las casillas de inicio y fin, solo mostrará el laberinto; si se han establecido además 
- * las casillas de inicio y fin, en las coordenadas correspondientes se tendrá que mostrar una "I" y una "F", en lugar de 
- * mostrar un espacio en blanco que tenía el laberinto.
- * 
- * setStartEnd(): Método público que se encarga de solicitar al usuario las coordenadas I y J de las casillas de inicio y fin.
- * 
- * isLoaded(): Método público que comprueba si se ha cargado el laberinto.
- * 
- * deleteMaze(): Método privado que resetea los valores del laberinto.
- * 
- * obtainTxtNames(): Método privado que obtiene los ficheros txt almacenados.
- * 
- * readMaze(): Método privado que lee un laberinto del archivo.
- * 
- * numberVertically(): Metodo privado que muestra los numeros de columna en forma vertical.
- * 
- * maxFigure(): Método privado que obtiene la cantidad maxima de cibras de un entero.
- * 
- * setIJ(): Método privado que simplifica la carga de entrada y salida.
- * 
- * sameInOut(): Método privado que comprueba si la entrada y la salida son la misma casilla.
- * 
- * APF - 31-01-2024
- * VERSION: 0.2.0
- * 
- */
-
-/*
- * Maze.java
- * 
- * Modificaciones de la clase Maze
- * Se debe crear un atributo privado el cual será una lista dinámica que contendrá objetos 
- * Coordinate (la clase creada para guardar las coordenadas y dirección), donde se guardará la 
- * colección de objetos con las coordenadas de cada casilla por la que pasar para completar el 
- * camino que se está buscando. Se recomienda que sea un Stack (pila) o un ArrayList ya que el 
- * camino a buscar cambiará de tamaño en función de las dimensiones del laberinto, su distribución 
- * y las posiciones de inicio y fin. Si se quiere utilizar otro tipo de array o lista, se permite 
- * siempre que cumpla con la funcionalidad.
- * 
- * path: Stack, ArrayList o array de tipo "Coordinate" que utilizará el algoritmo para guardar las 
- * coordenadas y dirección del camino a buscar para luego mostrarlo.
- * 
- * APF - 19-02-2024
- * VERSION: 1.0.0
- * 
- */
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -87,7 +9,7 @@ import java.util.Stack;
  * Clase Maze utilizada para cragar un laberinto desde un fichero y realizar varias acciones con él.
  * 
  * @author Adrián Peñalver Fernández
- * @version 1.0.0
+ * @version 1.4.0
  * 
  */
 
@@ -118,8 +40,6 @@ public class Maze{
 		this.find=false;
 		
 	}
-	
-	
 	
 	/* METODOS DE LA CLASE MAZE */
 	
@@ -335,22 +255,22 @@ public class Maze{
 					System.out.print(Config.RED+"F "+Config.RESET);
 					check = false;
 				}
-
+					
 				if (check) {
-					
-					boolean camino = false;
-					
-					for (int k = 0; k < path.size(); k++) {
 						
-						if(i==path.get(k).getX() && j==path.get(k).getY()) {
+					boolean camino = false;
+						
+					for (int k = 0; k < path.size(); k++) {
 							
+						if(i==path.get(k).getX() && j==path.get(k).getY()) {
+								
 							System.out.print(Config.GREEN+path.get(k).getDirection()+" "+Config.RESET);
 							camino=true;
-							
+								
 						}
-						
+							
 					}
-					
+						
 					if(!camino) {
 						System.out.print(map[i][j]+" ");
 					}
@@ -360,7 +280,6 @@ public class Maze{
 			}
 
 			System.out.println();
-			//Log.insertLog(Log.SHOW_MAZE,"Lanerinto: "+fileName);
 
 		}
 

@@ -1,20 +1,12 @@
 package Classes;
 
-/* 
- * Config.java
- * 
- * APF - 30-04-2024
- * VERSION: 1.2.0
- * 
- */
-
 /**
  * Clase que contiene métodos y campos estáticos para usar en varias partes del programa.
  * 
  * Incluye comprobación de expresiones regulares, menus, formatos de letras, cabeceras de menu, etc...
  * 
  * @author Adrián Peñalver Fernández
- * @version 1.3.0
+ * @version 1.4.0
  * 
  */
 
@@ -67,7 +59,7 @@ public class Config{
 	 * Campo estático que permite conocer la versión actual del software.
 	 */
 	
-	public static final String VERSION = BLUE+"✅ -- Version Estable: 1.3.0 --"+RESET;
+	public static final String VERSION = BLUE+"✅ -- Version Estable: 1.4.0 --"+RESET;
 	
 	/**
 	 * Campo estático que permite acceder al directorio donde se almacenan los laberintos.

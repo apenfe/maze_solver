@@ -1,5 +1,11 @@
 package Classes;
 
+/**
+ * @author Adrián Peñalver Fernández
+ * @version 1.4.0
+ * 
+ */
+
 import java.io.FileWriter;
 import java.sql.Date;
 import java.text.SimpleDateFormat;

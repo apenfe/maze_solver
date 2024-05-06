@@ -1,5 +1,11 @@
 package Classes;
 
+/**
+ * @author Adrián Peñalver Fernández
+ * @version 1.4.0
+ * 
+ */
+
 public class ChangeData{
 	
 	public static Session session;

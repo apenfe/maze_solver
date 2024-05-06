@@ -1,5 +1,11 @@
 package Classes;
 
+/**
+ * @author Adrián Peñalver Fernández
+ * @version 1.4.0
+ * 
+ */
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

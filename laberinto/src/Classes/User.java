@@ -1,31 +1,10 @@
 package Classes;
 
-/* 
- * User.java
- * 
- * Clase pública que contiene las propiedades que almacenan la información de un usuario:
- * 
- * - username
- * - name
- * - nif
- * - email
- * - address
- * - birthdate
- * - role
- * 
- * Se usará para crear un objeto de este tipo de clase cuando se inicie sesión y se almacene
- * en él los datos del usuario que ha iniciado sesión.
- * 
- * APF - 21-12-2023
- * VERSION: 0.1.0
- * 
- */
-
 /**
  * Clase User utilizada para crear un usuario y posteriormente poder usarlo en una sesión.
  * 
  * @author Adrián Peñalver Fernández
- * @version 1.0.0
+ * @version 1.4.0
  * 
  */
 
