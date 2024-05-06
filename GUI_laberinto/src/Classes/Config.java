@@ -59,7 +59,8 @@ public class Config{
 	 * Campo estático que permite conocer la versión actual del software.
 	 */
 	
-	public static final String VERSION = BLUE+"✅ -- Version Estable: 1.4.0 --"+RESET;
+    public static final String VERSION_CODE = "V2.4.0";
+	public static final String VERSION = BLUE+"✅ -- Version Estable: 2.4.0 --"+RESET;
 	
 	/**
 	 * Campo estático que permite acceder al directorio donde se almacenan los laberintos.

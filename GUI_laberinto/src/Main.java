@@ -6,6 +6,7 @@ import Classes.Log;
 import Classes.Maze;
 import Classes.Session;
 import Classes.Utils;
+import Windows.Unlogged;
 
 /**
  * 
@@ -20,33 +21,17 @@ import Classes.Utils;
 
 public class Main {
 	
-	/**
-	 * Esta es una variable pública y estática que representa si el usuario ha iniciado o no la sesión
-	 */
-	
 	public static Session currentSession = new Session();
 	
-	/**
-	 * Esta es una variable pública y estática que representa el laberinto cargado, con el se puede decidir
-	 * si estan disponibles todas las opciones o no.
-	 */
-	
 	public static Maze currentMaze = new Maze();
-	
-	/**
-	 * Este método principal, da la bienvenida al usuario y le presenta un menu inicial
-	 * con opciones de no loggeado.
-	 * 
-	 * Tras el loggin este método muestra el menu con las opciones correspondientes al inicio de sesión.
-	 */
 	
 	public static int option = -1;
 	
 	public static void main(String[] args) {
 		
-		System.out.println(Config.WELCOME + " " + Config.VERSION);
+		Unlogged menu = new Unlogged();
 		Log.insertLog(Log.INIT,"");
-		Input.toContinue();
+		menu.setVisible(true);
 		
 		do { /* SE REPITE CONTINUAMENTE MIENTRAS NO SE PULSE 0 */
 			
