@@ -1,2 +1,2 @@
 # Maze_Solver
-Primer curso de Grado Superior Desarrollo Aplicaciones WEB
+![Solved Maze](laberinto/images/maze.png)
