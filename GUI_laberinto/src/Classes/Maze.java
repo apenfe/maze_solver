@@ -28,12 +28,6 @@ public class Maze{
 	
 	/* CONSTRUCTOR DE LA CLASE MAZE */
 	
-	/**
-	 * Constructor de la clase Maze, el cual especifica que el laberinto no ha sido cargado ni se ha encontrado ninguna solución
-	 * para este.
-	 * 
-	 */
-	
 	public Maze() {
 		
 		this.loaded=false;
@@ -125,7 +119,7 @@ public class Maze{
 				Log.insertLog(Log.CHARGE_MAZE,"Lanerinto: "+file);
 				break;
 			}else {
-				System.out.println(Config.RED+"\tDebe Seleccionar una opcion entre [0-"+mazeNames.size()+"]: "+Config.RESET);
+				System.out.println("\tDebe Seleccionar una opcion entre [0-"+mazeNames.size()+"]: ");
 			}
 			
 		}while(true);
@@ -135,12 +129,12 @@ public class Maze{
 		}
 		
 		if(readMaze(Config.MAZES_PATH+file)) { // SI EL LABERINTO SE LEE CORRECTAMENTE
-			System.out.println(Config.GREEN+"\n\tEL ARCHIVO "+file+" HA SIDO CARGADO EXITOSAMENTE."+Config.RESET);
+			System.out.println("\n\tEL ARCHIVO "+file+" HA SIDO CARGADO EXITOSAMENTE.");
 			this.fileName=file; // SE LE DA NOMBRE
 			this.loaded=true; // SE VUELVE A INDICAR QUE ESTÁ CARGADO
 			
 		}else {
-			System.out.println(Config.RED+"\n\tERROR AL LEER EL ARCHIVO "+file+Config.RESET);
+			System.out.println("\n\tERROR AL LEER EL ARCHIVO "+file);
 		}
 		
 	}
@@ -159,7 +153,7 @@ public class Maze{
 			
 		} catch (Exception e) {
 			
-			System.out.println(Config.RED+"\n\tERROR - CONTACTAR SERVICIO TECNICO."+Config.RESET);
+			System.out.println("\n\tERROR - CONTACTAR SERVICIO TECNICO.");
 		}
 
         if (files != null) {
@@ -194,7 +188,7 @@ public class Maze{
         	
         }catch(Exception e) {
         	
-        	System.out.println(Config.RED+"Error. Pongase en contacto con el soporte técnico."+Config.RESET);
+        	System.out.println("Error. Pongase en contacto con el soporte técnico.");
         	return false;
         }
         
@@ -249,10 +243,10 @@ public class Maze{
 				boolean check = true;
 
 				if ((i == startI && j == startJ) && (startI != 0 && startJ != 0)) {
-					System.out.print(Config.RED+"I "+Config.RESET);
+					System.out.print("I ");
 					check = false;
 				} else if ((i == endI && j == endJ) && (endI != 0 && endJ != 0)) {
-					System.out.print(Config.RED+"F "+Config.RESET);
+					System.out.print("F ");
 					check = false;
 				}
 					
@@ -264,7 +258,7 @@ public class Maze{
 							
 						if(i==path.get(k).getX() && j==path.get(k).getY()) {
 								
-							System.out.print(Config.GREEN+path.get(k).getDirection()+" "+Config.RESET);
+							System.out.print(path.get(k).getDirection()+" ");
 							camino=true;
 								
 						}
@@ -405,20 +399,20 @@ public class Maze{
 		showMaze();
 		
 		if(setIJ(true)) { // SI LA CASILLA DE ENTRADA SE ESTABLECE
-			System.out.println(Config.GREEN+"\r\tCASILLA DE ENTRADA FIJADA."+Config.RESET);
+			System.out.println("\r\tCASILLA DE ENTRADA FIJADA.");
 			Log.insertLog(Log.MAZE_IN_OUT,"Casilla de entrada establecida --> "+startI+" "+startJ);
 		}else { // EN OTRO CASO, SI EL USUARIO DESISTE SE TERMINA EL PROGRAMA.
-			System.out.println(Config.RED+"\r\tNO SE HA PODIDO FIJAR LA CASILLA DE ENTRADA."+Config.RESET);
+			System.out.println("\r\tNO SE HA PODIDO FIJAR LA CASILLA DE ENTRADA.");
 			return;
 		}
 		
 		showMaze();
 		
 		if(setIJ(false)) { // SI LA CASILLA DE SALIDA SE ESTABLECE
-			System.out.println(Config.GREEN+"\r\tCASILLA DE SALIDA FIJADA."+Config.RESET);
+			System.out.println("\r\tCASILLA DE SALIDA FIJADA.");
 			Log.insertLog(Log.MAZE_IN_OUT,"Casilla de salida establecida --> "+endI+" "+endJ);
 		}else { // EN OTRO CASO, SI EL USUARIO DESISTE SE TERMINA EL PROGRAMA.
-			System.out.println(Config.RED+"\r\tNO SE HA PODIDO FIJAR LA CASILLA DE SALIDA."+Config.RESET);
+			System.out.println("\r\tNO SE HA PODIDO FIJAR LA CASILLA DE SALIDA.");
 		}
 		
 		showMaze();
@@ -445,7 +439,7 @@ public class Maze{
 				num=Input.getInt("\r\tIntroduzca la fila de "+casilla+": ", true);
 				
 				if(num<0 || num>map.length-1) {
-					System.out.println(Config.RED+"\r\tEl número debe de ser mayor o igual que 0 y menor que "+(map.length-1)+Config.RESET);
+					System.out.println("\r\tEl número debe de ser mayor o igual que 0 y menor que "+(map.length-1));
 					Log.insertLog(Log.MAZE_IN_OUT,"ERROR al fijar fila: "+num);
 
 				}
@@ -463,7 +457,7 @@ public class Maze{
 				num=Input.getInt("\tIntroduzca la columna de "+casilla+": ", true);
 				
 				if(num<0 || num>map[0].length-1) {
-					System.out.println(Config.RED+"\r\tEl número debe de ser mayor o igual que 0 y menor que "+(map[0].length-1)+Config.RESET);
+					System.out.println("\r\tEl número debe de ser mayor o igual que 0 y menor que "+(map[0].length-1));
 					Log.insertLog(Log.MAZE_IN_OUT,"ERROR al fijar columna: "+num);
 				}
 				
@@ -477,7 +471,7 @@ public class Maze{
 			
 			if(sameInOut()) { // SI LAS CASILLAS DE ENTRADA Y SALIDA SON LAS MISMAS
 				
-				System.out.println(Config.RED+"\r\tLas casillas de entrada y salida coinciden."+Config.RESET);
+				System.out.println("\r\tLas casillas de entrada y salida coinciden.");
 				Log.insertLog(Log.MAZE_IN_OUT,"ERROR casillas coinciden");
 				
 				if(Utils.confirmExit("\r\t¿Desea ingresar otra casilla de "+casilla+"? SI-S NO-N ", "N")) {
@@ -493,7 +487,7 @@ public class Maze{
 					return true;
 				} else { // EN OTRO CASO...
 					
-					System.out.println(Config.RED+"\r\tLa casilla coincide con una pared."+Config.RESET);
+					System.out.println("\r\tLa casilla coincide con una pared.");
 					Log.insertLog(Log.MAZE_IN_OUT,"ERROR la casilla es una pared");
 					
 					if (Utils.confirmExit("\r\t¿Desea ingresar otra casilla de " + casilla + "? SI-S NO-N ", "N")) {
@@ -563,7 +557,7 @@ public class Maze{
 		} else {
 			exit="fracaso";
 
-			System.out.println(Config.RED+"\n\tEl laberinto no tiene solución."+Config.RESET);
+			System.out.println("\n\tEl laberinto no tiene solución.");
 			
 		}
 		
@@ -679,7 +673,7 @@ public class Maze{
 		}else {
 			exit="fracaso";
 			steps=0;
-			System.out.println(Config.RED+"\n\tNo hay ninguna solución posible."+Config.RESET);
+			System.out.println("\n\tNo hay ninguna solución posible.");
 		}
 		
 		Log.insertLog(Log.SHORTER_WAY,exit+" Numero de pasos: "+steps);
@@ -698,7 +692,6 @@ public class Maze{
 		System.out.println("\n\tTiempo acumulado: "+time+" (s).");
 		this.find=false;
 		path.clear();
-		Input.toContinue();
 		
 	}
 	

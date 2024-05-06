@@ -106,7 +106,6 @@ public class Utils{
             
         } catch (NoSuchAlgorithmException e) {
         	
-            System.err.println("Error al encriptar la contraseña.");
             e.printStackTrace();
             
         }
@@ -115,46 +114,17 @@ public class Utils{
 		
 	}
 	
-	/* METODO PARA COMPROBAR FORMATO DE EMAIL */
-	
-	/**
-	 * Método estático que comprueba si un email tiene formato correcto.
-	 * 
-	 *  @param email Email a comprobar.
-	 *  @return boolean Check del email.
-	 */
-	
 	public static boolean validateEmail(String email) {
 		
 		return email.matches("^[\\w-\\+]+(\\.[\\w-\\+]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
 	}
 	
-	/* METODO PARA COMPROBAR FORMATO DE NIF */
-	
-	/**
-	 * Método estático que compruba si un DNI tiene formato correcto.
-	 * 
-	 *  @param nif DNI a comprobar.
-	 *  @return boolean Check del nif.
-	 */
-	
 	public static boolean validateNif(String nif) {
 		
 		return nif.matches("^\\d{8}[T|R|W|A|G|M|Y|F|P|D|X|B|N|J|Z|S|Q|V|H|L|C|K|E|t|r|w|a|g|m|y|f|p|d|x|b|n|j|z|s|q|v|h|l|c|k|e]$");
 		
 	}
-	
-	/* METODO PARA COMPROBAR FORMATO DE FECHA */
-	
-	/**
-	 * Método estático que compruba si una fecha tiene formato correcto y es válida.
-	 * Además comprueba si la fecha no va más allá del año actual.
-	 * 
-	 *  @param birthdate Fecha a comprobar.
-	 *  @param currentYear Año actual.
-	 *  @return boolean Check de la fecha de nacimiento.
-	 */
 	
 	public static boolean validateDate(String date) {
         
@@ -195,15 +165,6 @@ public class Utils{
 		return false;
 	}
 	
-	/* METODO PARA COMPROBAR SI ES UN NOMBRE VÁLIDO */
-	
-	/**
-	 * Método estático que compruba si un nombre tienen un formato válido.
-	 * 
-	 *  @param text Texto a comprobar.
-	 *  @return boolean Check de la comprobación del nombre.
-	 */
-	
 	public static boolean validateName(String name) {
 		
 		return name.matches("^([a-zA-ZáéíóúÁÉÍÓÚàèìòùÀÜÈÌÙÒñÑ][a-záéíóúàèìòùñüç']+)( [a-zA-ZáéíóúÁÉÍÓÚàèìòùÀÈÌÙÜÒñÑ]{1}[a-záéíóúàèìòùñüç']+(-[a-záéíóúàèìòùñüç']+)?){1,2}$");
@@ -220,37 +181,6 @@ public class Utils{
 		
 		return password.matches("(?=.*[A-ZÑ])(?=.*[a-zñ])(?=.*\\d)(?=.+[$*-+&!¡#?%]).{8,}");
 	
-	}
-	
-	
-/* METODO PARA CONFIRMAR LA SALIDA CON UNA S u s */
-	
-	/**
-	 * Método estático que permite mostar un mensaje para pedir al usuario si quiere salir del programa.
-	 * 
-	 * @return Boolean confirmación de salida.
-	 */
-	
-	public static boolean confirmExit() {
-		
-		return(Input.getString("\n\t¿Está seguro que desea salir? SI -> s ").equalsIgnoreCase("S"));
-		
-	}
-	
-	/* METODO PARA CONFIRMAR UN MENSAJE CON UNA LETRA A ELEGIR */
-	
-	/**
-	 * Método estático que sobrecargado, permite mostar un mensaje y también recibe un mensaje de aceptación.
-	 * 
-	 *  @param enunciado Enunciado que se desea introducir.
-	 *  @param respuesta Respuesta deseada para ser afirmativa.
-	 *  @return boolean Confirmación de ununciado.
-	 */
-	
-	public static boolean confirmExit(String enun, String response) { 
-		
-		return (Input.getString(enun).equalsIgnoreCase(response));
-		
 	}
 	
 }

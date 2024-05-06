@@ -3,11 +3,15 @@ package Windows;
 import javax.swing.*;
 
 import Classes.Config;
+import Classes.Log;
+import Classes.Session;
 
 import java.awt.*;
 import java.awt.event.*;
 
 public class Unlogged extends JFrame implements ActionListener{
+	
+	public static Session currentSession = new Session();
 	
 	private Container contenedor;
 	private JLabel titulo, labelInfo;
@@ -90,19 +94,24 @@ public class Unlogged extends JFrame implements ActionListener{
 
 	private void login() {
 		
-		
+		Login login = new Login(this);
+		login.setVisible(true);
+		this.setVisible(false);
 
 	}
 	
 	private void exit() {
 		
-		
+		Log.insertLog(Log.EXIT,"");
+		System.exit(0);
 
 	}
 	
 	private void signup() {
 		
-		
+		Signup registro = new Signup(this);
+		registro.setVisible(true);
+		this.setVisible(false);
 		
 	}
 

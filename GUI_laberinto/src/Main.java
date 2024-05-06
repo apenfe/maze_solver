@@ -1,11 +1,6 @@
-import Classes.AdminOptions;
-import Classes.ChangeData;
-import Classes.Config;
-import Classes.Input;
 import Classes.Log;
 import Classes.Maze;
 import Classes.Session;
-import Classes.Utils;
 import Windows.Unlogged;
 
 /**
@@ -25,74 +20,26 @@ public class Main {
 	
 	public static Maze currentMaze = new Maze();
 	
-	public static int option = -1;
-	
 	public static void main(String[] args) {
 		
 		Unlogged menu = new Unlogged();
 		Log.insertLog(Log.INIT,"");
 		menu.setVisible(true);
 		
-		do { /* SE REPITE CONTINUAMENTE MIENTRAS NO SE PULSE 0 */
-			
-			if(currentSession.isLogged()) { /* SI EL USUARIO SE HA LOGGEADO */
-				
-				if(currentSession.isAdmin()) {
-					
-					option = Input.getInt(Config.LOGGED_ADMIN_MENU, false);
-					
-				}else {
-					
-					option = Input.getInt(Config.LOGGED_MENU, false);
-					
-				}
-				
-				loggedOptions();
-
-			}else { /* SI EL USUARIO NO SE HA LOGGEADO */
-				
-				option = Input.getInt(Config.UNLOGGED_MENU, false); 
-				unloggedOptions();
-		
-			}
-			
-		} while (option!=0);
-		
-		Log.insertLog(Log.EXIT,"");
-		System.out.println(Config.GOODBYE);
-		
 	}
-	
-	/* METODOS USADOS EN LA CLASE MAIN */
-	
-	/* OPCIONES PARA USUARIOS REGISTRADOS */
-	
-	/**
-	 * Este método se encarga de mostrar al usuario las opciones disponibles una vez iniciada la sesión.
-	 * @param option Entrada seleccionada por el usuario.
-	 */
 	
 	public static void loggedOptions() {
 		
-		if(option==0) { // METODO EXIT
+		int option = 0; 
+		
+		if(option==1) { // CARGAR LABERINTO
 			
-			System.out.println(Config.EXIT);
-			
-			if(!Utils.confirmExit()) {
-				option=-1;
-			}
-			
-		}else if(option==1) { // CARGAR LABERINTO
-			
-			System.out.println("\t"+Config.LOAD_MAZE);
-			currentMaze.loadMaze();
-			Input.toContinue();
+			currentMaze.loadMaze();	
 			
 		}else if(option==2) { // METODO VER LABERINTO ACTUAL
 			
 			if(currentMaze.isLoaded()) {
-				System.out.println("\t"+Config.MAZE);
-				Log.insertLog(Log.SHOW_MAZE,"Lanerinto: "+currentMaze.getFileName());
+			
 				currentMaze.showMaze();
 				
 			}else {
@@ -101,13 +48,10 @@ public class Main {
 				Log.insertLog(Log.SHOW_MAZE,"ERROR: No se ha cargado el laberinto.");
 			}
 			
-			Input.toContinue();
-			
 		}else if(option==3) { // METODO ESTABLECER ENTRADA Y SALIDA
 			
 			if(currentMaze.isLoaded()) {
 				
-				System.out.println("\t"+Config.SET_IN_OUT);
 				currentMaze.setStartEnd();
 				
 			}else {
@@ -116,13 +60,10 @@ public class Main {
 				Log.insertLog(Log.SHOW_MAZE,"ERROR: No se ha cargado el laberinto.");
 			}
 			
-			Input.toContinue();
-			
 		}else if(option==4) { // BUSCAR CAMINOS
 			
 			if(currentMaze.isLoaded() && currentMaze.inOutNotZero()) {
 				
-				System.out.println("\t"+Config.SOLVE_MAZE);
 				Log.insertLog(Log.FIND_PATH,"Acceso menu algoritmos");
 				solveMazeOptions();
 				
@@ -133,12 +74,9 @@ public class Main {
 
 			}
 			
-			Input.toContinue();
-			
 		}else if(option==5) { // METODO INFO
 			
 			currentSession.showUser();
-			Input.toContinue();
 			
 		}else if(option==6) { // METODO LOGOUT
 			
@@ -148,65 +86,9 @@ public class Main {
 				currentMaze = new Maze();
 			}
 			
-			Input.toContinue();
-			
-		}else if(option==7) { // METODO MODIFICACION DATOS USUARIO
-			
-			if(currentSession.isAdmin()) {
-				
-				AdminOptions.menu();
-				
-			}else {
-				
-				ChangeData.changeUserData(currentSession);
-				
-			}
-			
-			Input.toContinue();
-			
 		}
 		
 	}
-	
-	
-	/* OPCIONES PARA USUARIOS NO REGISTRADOS */
-	
-	/**
-	 * Este método se encarga de mostrar al usuario las opciones disponibles antes del inicio de sesión.
-	 * 
-	 * @param option Entrada seleccionada por el usuario.
-	 */
-	
-	public static void unloggedOptions() {
-		
-		if(option==0) { // METODO SALIR
-			
-			System.out.println(Config.EXIT);
-			
-			if(!Utils.confirmExit()) {
-				option=-1;
-			}
-			
-		}else if(option==1) { // METODO LOGIN
-		
-			currentSession.login();
-			
-		}else if(option==2) { // METODO SIGNUP
-			
-			currentSession.signup();
-			Input.toContinue();
-			
-		}
-		
-	}
-	
-	/* OPCIONES PARA LA RESOLUCION DE LABERINTOS */
-	
-	/**
-	 * Este método se encarga de complementar el menu de opciones de usuario logueados.
-	 * 
-	 * Permite al usuario seleccionar las diferentes formas de resolver el laberinto.
-	 */
 	
 	public static void solveMazeOptions() {
 		
@@ -214,15 +96,7 @@ public class Main {
 		
 		do {
 			
-			option = Input.getInt(Config.SOLVE_MAZE_MENU, false);
-			
 			if(option == 0) {
-				
-				if(Utils.confirmExit()) {
-					break;
-				}else {
-					option = -1;
-				}
 				
 			}else if(option == 1) {
 				
@@ -235,7 +109,6 @@ public class Main {
 			}else {
 				
 				System.out.println("\n\tSeleccione una opción válida entre [0-2]");
-				Input.toContinue();
 				
 			}
 			

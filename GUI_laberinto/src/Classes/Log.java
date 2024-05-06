@@ -14,8 +14,8 @@ public class Log{
 	
 	private static final String LOG_NAME = "syslog.txt";
 	
-	public static final String INIT = "---------------------------------------------------------\n[Inicio del Programa - "+Config.VERSION+"]"; 
-	public static final String EXIT = "[Final del Programa - "+Config.VERSION+"]"; 
+	public static final String INIT = "---------------------------------------------------------\n[Inicio del Programa - "+Config.VERSION_CODE+"]"; 
+	public static final String EXIT = "[Final del Programa - "+Config.VERSION_CODE+"]"; 
 	public static final String LOGIN = "[Evento login]"; 
 	public static final String SIGNUP = "[Evento de registro]"; 
 	public static final String LOGOUT = "[Evento logout]"; 
