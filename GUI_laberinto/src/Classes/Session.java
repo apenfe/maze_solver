@@ -11,14 +11,11 @@ package Classes;
 
 public class Session{
 	
-	
 	public User currentUser;
 	public DAO db;
-	protected boolean logged;
 	
 	public Session() {
 		
-		this.logged=false; // INICIA COMO NO LOGGED
 		this.currentUser= new User(); // CREA UN OBJETO USER
 		this.db= new DAO(); // CREA UN OBJETO BASE DE DATOS
 		
@@ -32,7 +29,6 @@ public class Session{
 
 		if (currentUser!=null) { // BUSCA UNA COOINCIDENCIA EN LA BASE DE DATOS
 			
-			this.logged=true;
 			Log.insertLog(Log.LOGIN,"Login exitoso: "+user);
 			return true;
 
@@ -60,22 +56,16 @@ public class Session{
 
 	}
 	
-	public void showUser() {
+	public String showUser() {
 		
-		currentUser.info();
+		return currentUser.info();
 		
 	}
 	
 	public void logOut() {
 		
-		logged=false; // SE PONE A FALSE PARA VOLVER A MENU INICIAL
 		this.currentUser= new User(); // EL USUARIO SE PONE A NULL
 		
-	}
-	
-	public boolean isLogged() {
-		
-		return this.logged;
 	}
 	
 	public boolean checkData(String[] userdata) {

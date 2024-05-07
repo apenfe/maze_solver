@@ -19,7 +19,7 @@ public class Signup extends JFrame implements ActionListener{
 		
 		this.unlogged=unlogged;
 		this.setTitle("Maze_Solver "+Config.VERSION_CODE);
-		this.setBounds(100,100,400,700);
+		this.setBounds(600,200,400,700);
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		
 		this.contenedor=this.getContentPane();
@@ -210,9 +210,9 @@ public class Signup extends JFrame implements ActionListener{
 			
 		}
 		
-		if(Unlogged.currentSession.checkData(data)) {
+		if(unlogged.currentSession.checkData(data)) {
 			
-			if(Unlogged.currentSession.signup(data)) {
+			if(unlogged.currentSession.signup(data)) {
 				
 				this.labelInfo.setText("Usuario creado correctamente.");
 				this.labelInfo.setForeground(Color.GREEN);

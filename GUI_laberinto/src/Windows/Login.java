@@ -9,7 +9,7 @@ import java.awt.event.*;
 
 public class Login extends JFrame implements ActionListener{
 	
-	private Unlogged unlogged;
+	public Unlogged unlogged;
 	private Container contenedor;
 	private JLabel titulo, labelnick, labelPassword, labelInfo;
 	private JTextField campoNick, campoPassword;
@@ -19,7 +19,7 @@ public class Login extends JFrame implements ActionListener{
 		
 		this.unlogged=unlogged;
 		this.setTitle("Maze_Solver "+Config.VERSION_CODE);
-		this.setBounds(100,100,700,500);
+		this.setBounds(600,200,700,500);
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		
 		this.contenedor=this.getContentPane();
@@ -142,9 +142,9 @@ public class Login extends JFrame implements ActionListener{
 			
 		}
 		
-		if(Unlogged.currentSession.login(nombre,password)) {
+		if(unlogged.currentSession.login(nombre,password)) {
 			
-			this.labelInfo.setText("Bienvenido"+Unlogged.currentSession.currentUser.getName());
+			this.labelInfo.setText("Bienvenido"+unlogged.currentSession.currentUser.getName());
 			this.labelInfo.setForeground(Color.GREEN);
 			this.setVisible(false);
 			Logged logged = new Logged(this);

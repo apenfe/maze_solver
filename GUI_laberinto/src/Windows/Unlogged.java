@@ -11,7 +11,7 @@ import java.awt.event.*;
 
 public class Unlogged extends JFrame implements ActionListener{
 	
-	public static Session currentSession = new Session();
+	public  Session currentSession = new Session();
 	
 	private Container contenedor;
 	private JLabel titulo, labelInfo;
@@ -20,7 +20,7 @@ public class Unlogged extends JFrame implements ActionListener{
 	public Unlogged() {
 		
 		this.setTitle("Maze_Solver "+Config.VERSION_CODE);
-		this.setBounds(700,300,400,500);
+		this.setBounds(600,200,400,500);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		this.contenedor=this.getContentPane();

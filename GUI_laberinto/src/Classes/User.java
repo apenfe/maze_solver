@@ -127,17 +127,20 @@ public class User{
 	 * Método info que muestra la información completa del usuario.
 	 */
 
-	public void info() {
+	public String info() {
 		
-		System.out.println("\n\t- ID usuario: [" + this.id + "]");
-		System.out.println("\t- Nombre de usuario: [" + this.username + "]");
-		System.out.println("\t- Nombre completo: [" + this.name + "]");
-		System.out.println("\t- NIF: [" + this.nif + "]");
-		System.out.println("\t- Dirección de correo electónico: [" + this.email + "]");
-		System.out.println("\t- Dirección postal: [" + this.addres + "]");
-		System.out.println("\t- Fecha de nacimiento: [" + Utils.formatDateEU(birthdate) + "] ---> " + Utils.getAge(birthdate)+ " años.");
-		System.out.println("\t- Tipo de rol / permisos: [" + this.role + "]");
+		String exit = "";
+		
+		exit+="<html>- ID usuario: [" + this.id + "]<br>";
+		exit+="\t- Nombre de usuario: [" + this.username + "]<br>";
+		exit+="\t- Nombre completo: [" + this.name + "]<br>";
+		exit+="\t- NIF: [" + this.nif + "]<br>";
+		exit+="\t- Dirección de correo electónico: [" + this.email + "]<br>";
+		exit+="\t- Dirección postal: [" + this.addres + "]<br>";
+		exit+="\t- Fecha de nacimiento: [" + Utils.formatDateEU(birthdate) + "] ---> " + Utils.getAge(birthdate)+ " años.<br>";
+		exit+="\t- Tipo de rol / permisos: [" + this.role + "]</html>";
 		Log.insertLog(Log.USER,"Usuario: "+this.username+", ID: "+this.id);
+		return exit;
 		
 	}
 
