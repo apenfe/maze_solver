@@ -7,7 +7,7 @@ import Classes.Config;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Login extends JFrame implements ActionListener{
+public class ChargeMaze extends JFrame implements ActionListener{
 	
 	public Unlogged unlogged;
 	private Container contenedor;
@@ -15,12 +15,12 @@ public class Login extends JFrame implements ActionListener{
 	private JTextField campoNick, campoPassword;
 	private JButton limpiar, enviar, volver;
 	
-	public Login(Unlogged unlogged) {
+	public ChargeMaze(Unlogged unlogged) {
 		
 		this.unlogged=unlogged;
 		this.setTitle("Maze_Solver "+Config.VERSION_CODE);
-		this.setBounds(600,200,450,300);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setBounds(600,200,700,500);
+		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		
 		this.contenedor=this.getContentPane();
 		this.contenedor.setLayout(null);
@@ -54,9 +54,9 @@ public class Login extends JFrame implements ActionListener{
 	
 	private void titulo() {
 
-		this.titulo = new JLabel("LOGIN");
+		this.titulo = new JLabel("CARGAR LABERINTO");
 		this.titulo.setFont(new Font("Arial", Font.PLAIN, 24));
-		this.titulo.setBounds(50, 10, 500, 40);
+		this.titulo.setBounds(50, 50, 500, 40);
 		this.contenedor.add(this.titulo);
 
 	}
@@ -65,19 +65,19 @@ public class Login extends JFrame implements ActionListener{
 		
 		this.enviar=new JButton("Entrar");
 		this.enviar.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.enviar.setBounds(50,220,95,25);
+		this.enviar.setBounds(50,330,95,25);
 		this.enviar.addActionListener(this);
 		this.contenedor.add(this.enviar);
 		
 		this.limpiar=new JButton("Limpiar campos");
 		this.limpiar.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.limpiar.setBounds(150,220,150,25);
+		this.limpiar.setBounds(150,330,150,25);
 		this.limpiar.addActionListener(this);
 		this.contenedor.add(this.limpiar);	
 		
 		this.volver=new JButton("Volver");
 		this.volver.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.volver.setBounds(305,220,95,25);
+		this.volver.setBounds(305,330,95,25);
 		this.volver.addActionListener(this);
 		this.contenedor.add(this.volver);	
 		
@@ -88,35 +88,35 @@ public class Login extends JFrame implements ActionListener{
 		// nombre
 		this.labelnick = new JLabel("Nombre de usuario:");
 		this.labelnick.setFont(new Font("Arial", Font.PLAIN, 18));
-		this.labelnick.setBounds(50, 50, 200, 30);
+		this.labelnick.setBounds(50, 130, 200, 30);
 		this.contenedor.add(this.labelnick);
 
 		// campo nombre
 
 		this.campoNick = new JTextField();
 		this.campoNick.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.campoNick.setBounds(50, 80, 200, 30);
+		this.campoNick.setBounds(50, 160, 200, 30);
 		this.contenedor.add(this.campoNick);
 
 		// telefono
 
 		this.labelPassword = new JLabel("Contraseña:");
 		this.labelPassword.setFont(new Font("Arial", Font.PLAIN, 18));
-		this.labelPassword.setBounds(50, 110, 200, 30);
+		this.labelPassword.setBounds(50, 190, 200, 30);
 		this.contenedor.add(this.labelPassword);
 
 		// campo telefono
 
 		this.campoPassword = new JTextField();
 		this.campoPassword.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.campoPassword.setBounds(50, 140, 200, 30);
+		this.campoPassword.setBounds(50, 220, 200, 30);
 		this.contenedor.add(this.campoPassword);
 
 		// label info
 
 		this.labelInfo = new JLabel("");
-		this.labelInfo.setFont(new Font("Arial", Font.BOLD, 15));
-		this.labelInfo.setBounds(50, 150, 400, 100);
+		this.labelInfo.setFont(new Font("Arial", Font.BOLD, 20));
+		this.labelInfo.setBounds(300, 150, 400, 100);
 		this.contenedor.add(this.labelInfo);
 
 	}
@@ -147,8 +147,6 @@ public class Login extends JFrame implements ActionListener{
 			this.labelInfo.setText("Bienvenido"+unlogged.currentSession.currentUser.getName());
 			this.labelInfo.setForeground(Color.GREEN);
 			this.setVisible(false);
-			Logged logged = new Logged(this);
-			logged.setVisible(true);
 			
 		}else {
 			

@@ -10,7 +10,7 @@ import java.awt.event.*;
 
 public class Logged extends JFrame implements ActionListener{
 	
-	private Login loginVentana;
+	public Login loginVentana;
 	private Container contenedor;
 	private JLabel titulo, labelInfo;
 	private JButton cargarLaberinto, verLaberinto, exit, EntradaSalida, BuscarCaminos, info, logout;
@@ -156,8 +156,9 @@ public class Logged extends JFrame implements ActionListener{
 
 	private void info() {
 		
-		this.labelInfo.setText(this.loginVentana.unlogged.currentSession.showUser());
-		this.labelInfo.setForeground(Color.BLACK);
+		UserInfo user = new UserInfo(this);
+		user.setVisible(true);
+		this.setVisible(false);
 
 	}
 

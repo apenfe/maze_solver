@@ -14,13 +14,13 @@ public class Unlogged extends JFrame implements ActionListener{
 	public  Session currentSession = new Session();
 	
 	private Container contenedor;
-	private JLabel titulo, labelInfo;
+	private JLabel titulo, labelInfo, icon;
 	private JButton login, signup, exit;
 	
 	public Unlogged() {
 		
 		this.setTitle("Maze_Solver "+Config.VERSION_CODE);
-		this.setBounds(600,200,400,500);
+		this.setBounds(600,200,400,400);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		this.contenedor=this.getContentPane();
@@ -29,7 +29,7 @@ public class Unlogged extends JFrame implements ActionListener{
 		this.titulo();
 		this.labels();
 		this.botones();
-
+		
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class Unlogged extends JFrame implements ActionListener{
 
 		this.titulo = new JLabel("GUI MAZE SOLVER");
 		this.titulo.setFont(new Font("Arial", Font.BOLD, 24));
-		this.titulo.setBounds(50, 50, 500, 40);
+		this.titulo.setBounds(50, 10, 500, 40);
 		this.contenedor.add(this.titulo);
 
 	}
@@ -64,19 +64,19 @@ public class Unlogged extends JFrame implements ActionListener{
 		
 		this.login=new JButton("Login");
 		this.login.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.login.setBounds(50,330,95,25);
+		this.login.setBounds(50,300,95,25);
 		this.login.addActionListener(this);
 		this.contenedor.add(this.login);
 		
 		this.signup=new JButton("Signup");
 		this.signup.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.signup.setBounds(150,330,95,25);
+		this.signup.setBounds(150,300,95,25);
 		this.signup.addActionListener(this);
 		this.contenedor.add(this.signup);	
 		
 		this.exit=new JButton("Salir");
 		this.exit.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.exit.setBounds(250,330,95,25);
+		this.exit.setBounds(250,300,95,25);
 		this.exit.addActionListener(this);
 		this.contenedor.add(this.exit);
 		
@@ -89,6 +89,13 @@ public class Unlogged extends JFrame implements ActionListener{
 		this.labelInfo.setFont(new Font("Arial", Font.BOLD, 20));
 		this.labelInfo.setBounds(300, 150, 400, 100);
 		this.contenedor.add(this.labelInfo);
+		
+		// label icon
+				this.icon = new JLabel("");
+				icon.setIcon(new ImageIcon("C:\\Users\\adria\\DAW\\1º AÑO\\PROGRAMACION\\maze_solver\\GUI_laberinto\\images\\pic004.jpg"));
+				this.icon.setFont(new Font("Arial", Font.BOLD, 20));
+				this.icon.setBounds(0, 0, 384, 289);
+				this.contenedor.add(this.icon);
 
 	}
 
