@@ -55,7 +55,7 @@ public class Unlogged extends JFrame implements ActionListener{
 
 		this.titulo = new JLabel("GUI MAZE SOLVER");
 		this.titulo.setFont(new Font("Arial", Font.BOLD, 24));
-		this.titulo.setBounds(50, 10, 500, 40);
+		this.titulo.setBounds(66, 0, 234, 40);
 		this.contenedor.add(this.titulo);
 
 	}
@@ -85,16 +85,16 @@ public class Unlogged extends JFrame implements ActionListener{
 	private void labels() {
 
 		// label info
-		this.labelInfo = new JLabel("");
+		this.labelInfo = new JLabel("Busqueda de caminos en laberintos");
 		this.labelInfo.setFont(new Font("Arial", Font.BOLD, 20));
-		this.labelInfo.setBounds(300, 150, 400, 100);
+		this.labelInfo.setBounds(21, 51, 353, 25);
 		this.contenedor.add(this.labelInfo);
 		
 		// label icon
 				this.icon = new JLabel("");
 				icon.setIcon(new ImageIcon("C:\\Users\\adria\\DAW\\1º AÑO\\PROGRAMACION\\maze_solver\\GUI_laberinto\\images\\pic004.jpg"));
 				this.icon.setFont(new Font("Arial", Font.BOLD, 20));
-				this.icon.setBounds(0, 0, 384, 289);
+				this.icon.setBounds(0, 0, 384, 361);
 				this.contenedor.add(this.icon);
 
 	}

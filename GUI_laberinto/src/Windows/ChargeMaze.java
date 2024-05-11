@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import Classes.Config;
-import Classes.Maze;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -12,14 +11,7 @@ import java.util.ArrayList;
 
 public class ChargeMaze extends JFrame implements ActionListener, MouseListener{
 	
-	/*
-	 * Cargar laberinto:
-Aparecerá el listado con los ficheros para seleccionar uno con el ratón y cargarlo con un
-botón. También se permite la opción de escribir el nombre del fichero mediante un campo de
-texto. Debe tener un botón para volver atrás.
-	 */
 	private Logged logged;
-	private Maze maze;
 	private Container contenedor;
 	private JLabel titulo, labelBuscar, labelInfo;
 	private JTextField campoBuscar;
@@ -28,9 +20,8 @@ texto. Debe tener un botón para volver atrás.
 	private JScrollPane tableScroll;
 	private String[] columnas = {"Laberintos"};
 	
-	public ChargeMaze(Logged logged, Maze maze) {
+	public ChargeMaze(Logged logged) {
 		
-		this.maze=maze;
 		this.logged=logged;
 		this.setTitle("Maze_Solver "+Config.VERSION_CODE);
 		this.setBounds(600,200,400,500);
@@ -70,9 +61,34 @@ texto. Debe tener un botón para volver atrás.
 		this.resultados = new JTable(new String[0][0],this.columnas);
 		this.tableScroll=new JScrollPane(this.resultados);
 		this.tableScroll.setBounds(30,140,332,220);
+		this.resultados.addMouseListener(this); ///
 		this.contenedor.add(this.tableScroll);
 		this.rellenarTabla();
 		
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+	    if (e.getSource() == this.resultados) {
+	        // Obtener la fila seleccionada
+	        int row = this.resultados.getSelectedRow();
+	        // Obtener el valor de la primera columna de la fila seleccionada
+	        Object selectedValue = this.resultados.getValueAt(row, 0);
+	        // Puedes hacer lo que desees con el valor seleccionado, por ejemplo, imprimirlo
+	        
+	        if(this.logged.currentMaze.loadMaze(selectedValue.toString())) {
+				
+				this.labelInfo.setText("Laberinto cargado correctamente "+selectedValue.toString());
+				this.labelInfo.setForeground(Color.GREEN);
+				
+			}else {
+				
+				this.labelInfo.setText("Error al cargar laberinto");
+				this.labelInfo.setForeground(Color.RED);
+				
+			}
+	    }
 	}
 	
 	private void titulo() {
@@ -86,7 +102,7 @@ texto. Debe tener un botón para volver atrás.
 	
 	private void botones() {
 		
-		this.enviar=new JButton("Cragar");
+		this.enviar=new JButton("Cargar");
 		this.enviar.setFont(new Font("Arial", Font.PLAIN, 16));
 		this.enviar.setBounds(250,90,95,25);
 		this.enviar.addActionListener(this);
@@ -140,7 +156,7 @@ texto. Debe tener un botón para volver atrás.
 	private void enviar() {
 		
 		String nombre = this.campoBuscar.getText().trim();
-		ArrayList<String> mazeNames = this.maze.obtainTxtNames(Config.MAZES_PATH);
+		ArrayList<String> mazeNames = this.logged.currentMaze.obtainTxtNames(Config.MAZES_PATH);
 		boolean listado=false;
 		
 		for (int i = 0; i < mazeNames.size(); i++) {
@@ -169,9 +185,9 @@ texto. Debe tener un botón para volver atrás.
 			
 		}
 		
-		if(this.maze.loadMaze(nombre)) {
+		if(this.logged.currentMaze.loadMaze(nombre)) {
 			
-			this.labelInfo.setText("Laberinto cargado correctamente");
+			this.labelInfo.setText("Laberinto cargado correctamente "+nombre);
 			this.labelInfo.setForeground(Color.GREEN);
 			
 		}else {
@@ -187,12 +203,6 @@ texto. Debe tener un botón para volver atrás.
 		
 		this.setVisible(false);
 		this.logged.setVisible(true);
-		
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -222,7 +232,7 @@ texto. Debe tener un botón para volver atrás.
 	
 	private void rellenarTabla() {
 		
-		ArrayList<String> mazeNames = this.maze.obtainTxtNames(Config.MAZES_PATH);
+		ArrayList<String> mazeNames = this.logged.currentMaze.obtainTxtNames(Config.MAZES_PATH);
 		int filas = mazeNames.size();
 		int columnas = this.columnas.length;
 		
