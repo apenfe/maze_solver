@@ -1,36 +1,49 @@
 package Windows;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import Classes.Config;
+import Classes.Maze;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
-public class ChargeMaze extends JFrame implements ActionListener{
+public class ChargeMaze extends JFrame implements ActionListener, MouseListener{
 	
-	public Unlogged unlogged;
+	/*
+	 * Cargar laberinto:
+Aparecerá el listado con los ficheros para seleccionar uno con el ratón y cargarlo con un
+botón. También se permite la opción de escribir el nombre del fichero mediante un campo de
+texto. Debe tener un botón para volver atrás.
+	 */
+	private Logged logged;
+	private Maze maze;
 	private Container contenedor;
-	private JLabel titulo, labelnick, labelPassword, labelInfo;
-	private JTextField campoNick, campoPassword;
+	private JLabel titulo, labelBuscar, labelInfo;
+	private JTextField campoBuscar;
 	private JButton limpiar, enviar, volver;
+	private JTable resultados;
+	private JScrollPane tableScroll;
+	private String[] columnas = {"Laberintos"};
 	
-	public ChargeMaze(Unlogged unlogged) {
+	public ChargeMaze(Logged logged, Maze maze) {
 		
-		this.unlogged=unlogged;
+		this.maze=maze;
+		this.logged=logged;
 		this.setTitle("Maze_Solver "+Config.VERSION_CODE);
-		this.setBounds(600,200,700,500);
+		this.setBounds(600,200,400,500);
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		
 		this.contenedor=this.getContentPane();
 		this.contenedor.setLayout(null);
 		
 		titulo();
-		
 		labels();
-			
 		botones();
-
+		tabla();	
+		
 	}
 
 	@Override
@@ -52,32 +65,42 @@ public class ChargeMaze extends JFrame implements ActionListener{
 		
 	}
 	
+	private void tabla() {
+		
+		this.resultados = new JTable(new String[0][0],this.columnas);
+		this.tableScroll=new JScrollPane(this.resultados);
+		this.tableScroll.setBounds(30,140,332,220);
+		this.contenedor.add(this.tableScroll);
+		this.rellenarTabla();
+		
+	}
+	
 	private void titulo() {
 
 		this.titulo = new JLabel("CARGAR LABERINTO");
 		this.titulo.setFont(new Font("Arial", Font.PLAIN, 24));
-		this.titulo.setBounds(50, 50, 500, 40);
+		this.titulo.setBounds(30, 21, 500, 40);
 		this.contenedor.add(this.titulo);
 
 	}
 	
 	private void botones() {
 		
-		this.enviar=new JButton("Entrar");
+		this.enviar=new JButton("Cragar");
 		this.enviar.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.enviar.setBounds(50,330,95,25);
+		this.enviar.setBounds(250,90,95,25);
 		this.enviar.addActionListener(this);
 		this.contenedor.add(this.enviar);
 		
 		this.limpiar=new JButton("Limpiar campos");
 		this.limpiar.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.limpiar.setBounds(150,330,150,25);
+		this.limpiar.setBounds(50,374,150,25);
 		this.limpiar.addActionListener(this);
 		this.contenedor.add(this.limpiar);	
 		
 		this.volver=new JButton("Volver");
 		this.volver.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.volver.setBounds(305,330,95,25);
+		this.volver.setBounds(224,374,95,25);
 		this.volver.addActionListener(this);
 		this.contenedor.add(this.volver);	
 		
@@ -85,56 +108,52 @@ public class ChargeMaze extends JFrame implements ActionListener{
 	
 	private void labels() {
 
-		// nombre
-		this.labelnick = new JLabel("Nombre de usuario:");
-		this.labelnick.setFont(new Font("Arial", Font.PLAIN, 18));
-		this.labelnick.setBounds(50, 130, 200, 30);
-		this.contenedor.add(this.labelnick);
+		// buscar
+		this.labelBuscar = new JLabel("Buscar laberinto:");
+		this.labelBuscar.setFont(new Font("Arial", Font.PLAIN, 18));
+		this.labelBuscar.setBounds(30, 61, 200, 30);
+		this.contenedor.add(this.labelBuscar);
 
-		// campo nombre
+		// campo buscar
 
-		this.campoNick = new JTextField();
-		this.campoNick.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.campoNick.setBounds(50, 160, 200, 30);
-		this.contenedor.add(this.campoNick);
-
-		// telefono
-
-		this.labelPassword = new JLabel("Contraseña:");
-		this.labelPassword.setFont(new Font("Arial", Font.PLAIN, 18));
-		this.labelPassword.setBounds(50, 190, 200, 30);
-		this.contenedor.add(this.labelPassword);
-
-		// campo telefono
-
-		this.campoPassword = new JTextField();
-		this.campoPassword.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.campoPassword.setBounds(50, 220, 200, 30);
-		this.contenedor.add(this.campoPassword);
+		this.campoBuscar = new JTextField();
+		this.campoBuscar.setFont(new Font("Arial", Font.PLAIN, 16));
+		this.campoBuscar.setBounds(30, 88, 200, 30);
+		this.contenedor.add(this.campoBuscar);
 
 		// label info
 
 		this.labelInfo = new JLabel("");
 		this.labelInfo.setFont(new Font("Arial", Font.BOLD, 20));
-		this.labelInfo.setBounds(300, 150, 400, 100);
+		this.labelInfo.setBounds(30, 410, 332, 40);
 		this.contenedor.add(this.labelInfo);
 
 	}
 
 	private void limpiarFormulario() {
 		
-		this.campoNick.setText("");
-		this.campoPassword.setText("");
+		this.campoBuscar.setText("");
 		this.labelInfo.setText("");
 
 	}
 	
 	private void enviar() {
 		
-		String nombre = this.campoNick.getText().trim();
-		String password = this.campoPassword.getText().trim();
+		String nombre = this.campoBuscar.getText().trim();
+		ArrayList<String> mazeNames = this.maze.obtainTxtNames(Config.MAZES_PATH);
+		boolean listado=false;
 		
-		if(nombre.length()==0||password.length()==0) {
+		for (int i = 0; i < mazeNames.size(); i++) {
+			
+			if(nombre.equals(mazeNames.get(i))) {
+				
+				listado=true;
+				
+			}
+			
+		}
+		
+		if(nombre.length()==0) {
 			
 			this.labelInfo.setText("Todos los campos son obligatorios.");
 			this.labelInfo.setForeground(Color.RED);
@@ -142,17 +161,23 @@ public class ChargeMaze extends JFrame implements ActionListener{
 			
 		}
 		
-		if(unlogged.currentSession.login(nombre,password)) {
+		if(listado==false) {
 			
-			this.labelInfo.setText("Bienvenido"+unlogged.currentSession.currentUser.getName());
+			this.labelInfo.setText("Ese laberinto no existe");
+			this.labelInfo.setForeground(Color.RED);
+			return;
+			
+		}
+		
+		if(this.maze.loadMaze(nombre)) {
+			
+			this.labelInfo.setText("Laberinto cargado correctamente");
 			this.labelInfo.setForeground(Color.GREEN);
-			this.setVisible(false);
 			
 		}else {
 			
-			this.labelInfo.setText("Usuario y/o contarseña incorrectos.");
+			this.labelInfo.setText("Error al cargar laberinto");
 			this.labelInfo.setForeground(Color.RED);
-			return;
 			
 		}
 		
@@ -161,7 +186,55 @@ public class ChargeMaze extends JFrame implements ActionListener{
 	private void volver() {
 		
 		this.setVisible(false);
-		this.unlogged.setVisible(true);
+		this.logged.setVisible(true);
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void rellenarTabla() {
+		
+		ArrayList<String> mazeNames = this.maze.obtainTxtNames(Config.MAZES_PATH);
+		int filas = mazeNames.size();
+		int columnas = this.columnas.length;
+		
+		String[][] datosTabla = new String[filas][columnas];
+		
+		for (int i = 0; i < mazeNames.size(); i++) {
+			
+			datosTabla[i][0] =  mazeNames.get(i);
+			
+		}
+		
+		this.resultados.setModel(new DefaultTableModel(datosTabla,this.columnas));
 		
 	}
 

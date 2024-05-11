@@ -6,3 +6,5 @@
 bin/
 .sonarlint/
 .metadata/
+.idea/
+*.idea

@@ -90,58 +90,28 @@ public class Maze{
 	 * 
 	 */
 
-	public void loadMaze() {
-		
-		int num = 0;
-		String file = ""; 
-				
-		ArrayList<String> mazeNames = obtainTxtNames(Config.MAZES_PATH); // OBTIENE LOS NOMBRES DE LOS LABERINTOS
-		
-		do { // LOS MUESTRA EN UN MENU
-			
-			System.out.println("\n\t------------------- LABERINTOS DISPONIBLES -------------------");
-			
-			for(int i =0; i<mazeNames.size();i++) {
-				
-				System.out.println("\t["+(i+1)+"]" + " ---> " + mazeNames.get(i));
-				
-			}
-			
-			System.out.println("\t[0] ---> SALIR");
-			
-			num = Input.getInt("\n\tSeleccione una opcion [0-"+mazeNames.size()+"]: ", false);
-			
-			if(num==0) {
-				System.out.println("\tVOLVIENDO AL MENU...");
-				return;
-			}else if(num>=1 && num<=mazeNames.size()) {
-				file+=mazeNames.get(num-1);
-				Log.insertLog(Log.CHARGE_MAZE,"Lanerinto: "+file);
-				break;
-			}else {
-				System.out.println("\tDebe Seleccionar una opcion entre [0-"+mazeNames.size()+"]: ");
-			}
-			
-		}while(true);
+	public boolean loadMaze(String file) {
 		
 		if(isLoaded()) { // EN CASO DE SELECCIONAR OTRO LABERINTO Y QUE YA TUVIESEMOS OTRO CARGADO...
+			
 			deleteMaze(true); // SE RESETEAN LOS VALORES COMPLETOS
+			
 		}
 		
 		if(readMaze(Config.MAZES_PATH+file)) { // SI EL LABERINTO SE LEE CORRECTAMENTE
-			System.out.println("\n\tEL ARCHIVO "+file+" HA SIDO CARGADO EXITOSAMENTE.");
+			
 			this.fileName=file; // SE LE DA NOMBRE
 			this.loaded=true; // SE VUELVE A INDICAR QUE ESTÁ CARGADO
-			
-		}else {
-			System.out.println("\n\tERROR AL LEER EL ARCHIVO "+file);
+			return true;
 		}
+		
+		return false;
 		
 	}
 	
 	/* METODO PARA OBTENER LOS NOMBRE DE LOS TXT */
 	
-	private ArrayList<String> obtainTxtNames(String path) {
+	public ArrayList<String> obtainTxtNames(String path) {
 		
         ArrayList<String> namesFiles = new ArrayList<String>();
         File[] files = new File[0];
@@ -153,7 +123,7 @@ public class Maze{
 			
 		} catch (Exception e) {
 			
-			System.out.println("\n\tERROR - CONTACTAR SERVICIO TECNICO.");
+			System.err.println("\n\tERROR - CONTACTAR SERVICIO TECNICO.");
 		}
 
         if (files != null) {
@@ -188,7 +158,7 @@ public class Maze{
         	
         }catch(Exception e) {
         	
-        	System.out.println("Error. Pongase en contacto con el soporte técnico.");
+        	System.err.println("Error. Pongase en contacto con el soporte técnico.");
         	return false;
         }
         
@@ -546,7 +516,6 @@ public class Maze{
 		
 		char[][] maze = simplifyMaze();
 
-		long inicio = System.currentTimeMillis();
 		String exit="";
 		
 		if (goAhead(startI, startJ,maze)) {
@@ -562,8 +531,6 @@ public class Maze{
 		}
 		
 		Log.insertLog(Log.FIRST_WAY,exit+" Numero de pasos: "+path.size());
-		
-		time(inicio);
 
 	}
 	
@@ -649,7 +616,6 @@ public class Maze{
 		path.clear();
 		char[][] maze = simplifyMaze();
 
-		long inicio = System.currentTimeMillis();
 		Stack<Coordinate> path2 = new Stack<>();
 		
 		int size = (map.length)+(map[0].length)*10;
@@ -677,22 +643,7 @@ public class Maze{
 		}
 		
 		Log.insertLog(Log.SHORTER_WAY,exit+" Numero de pasos: "+steps);
-		
-		time(inicio);
 
-	}
-	
-	/* METODO PARA CALCULAR EL TIEMPO DE SOLUCION */
-	
-	private void time(long inicio) {
-		
-		long fin = System.currentTimeMillis();
-		
-		double time = ((double)fin-(double)inicio)/1000.0;
-		System.out.println("\n\tTiempo acumulado: "+time+" (s).");
-		this.find=false;
-		path.clear();
-		
 	}
 	
 	/* BUSCA TODOS LOS CAMINOS Y SE QUEDA CON EL MAS CORTO DE TODOS ELLOS */

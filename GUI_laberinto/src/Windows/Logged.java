@@ -4,12 +4,14 @@ import javax.swing.*;
 
 import Classes.Config;
 import Classes.Log;
+import Classes.Maze;
 
 import java.awt.*;
 import java.awt.event.*;
 
 public class Logged extends JFrame implements ActionListener{
 	
+	public Maze currentMaze = new Maze();
 	public Login loginVentana;
 	private Container contenedor;
 	private JLabel titulo, labelInfo;
@@ -132,6 +134,10 @@ public class Logged extends JFrame implements ActionListener{
 	}
 
 	private void cargarlaberinto() {
+		
+		ChargeMaze carga = new ChargeMaze(this, this.currentMaze);
+		carga.setVisible(true);
+		this.setVisible(false);
 
 	}
 
