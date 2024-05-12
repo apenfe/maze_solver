@@ -13,7 +13,7 @@ Mostrará dos botones de opciones: uno para el primer camino posible y otro para
 más corto. Al resolver el algoritmo mostrará por pantalla el laberinto hecho con imágenes y
 el listado de pasos que ha seguido. Deberá tener un botón para volver atrás.
 	 */
-
+	private JTextArea textArea;
 	public Logged logged;
 	private Container contenedor;
 	private JLabel titulo, labelInfo;
@@ -82,6 +82,10 @@ el listado de pasos que ha seguido. Deberá tener un botón para volver atrás.
 		this.primerCamino.setBounds(177, 62, 197, 25);
 		this.primerCamino.addActionListener(this);
 		this.contenedor.add(this.primerCamino);
+		
+		this.textArea = new JTextArea();
+		textArea.setBounds(10, 49, 737, 503);
+		getContentPane().add(textArea);
 
 	}
 
@@ -108,6 +112,7 @@ el listado de pasos que ha seguido. Deberá tener un botón para volver atrás.
 			
 			this.labelInfo.setText("Solución mas corta encontrada");
 			this.labelInfo.setForeground(Color.GREEN);
+			pintar();
 			
 		}else {
 			
@@ -124,6 +129,7 @@ el listado de pasos que ha seguido. Deberá tener un botón para volver atrás.
 			
 			this.labelInfo.setText("Solución encontrada");
 			this.labelInfo.setForeground(Color.GREEN);
+			pintar();
 			
 		}else {
 			
@@ -131,6 +137,12 @@ el listado de pasos que ha seguido. Deberá tener un botón para volver atrás.
 			this.labelInfo.setForeground(Color.RED);
 			
 		}
+		
+	}
+	
+	private void pintar() {
+		
+		this.textArea.setText(this.logged.currentMaze.showMaze());
 		
 	}
 

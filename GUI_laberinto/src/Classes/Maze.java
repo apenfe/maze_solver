@@ -16,9 +16,9 @@ import java.util.Stack;
 public class Maze{
 	
 	/* ATRIBUTOS DE LA CLASE MAZE */
-	private Stack<Coordinate> path = new Stack<Coordinate>(); 
-	private char[][] map = new char[0][0];
-	private String fileName;
+	public Stack<Coordinate> path = new Stack<Coordinate>(); 
+	public char[][] map = new char[0][0];
+	public String fileName;
 	private boolean loaded;
 	private int startI;
 	private int startJ;
@@ -198,25 +198,25 @@ public class Maze{
 	 * 
 	 */
 	
-	public void showMaze() {
+	public String showMaze() {
 		
-		System.out.println("\n\tLaberinto: " + fileName); // SE INDICA EL NOMBRE
+		String exit = "";
 		
-		numberVertically(); // SE MUESTRAN LOS NUMEROS DE COLUMNA EN VERTICAL
+		exit += numberVertically(); // SE MUESTRAN LOS NUMEROS DE COLUMNA EN VERTICAL
 
 		for (int i = 0; i < map.length; i++) {
 
-			System.out.print("\t" + i + " - \t");
+			exit+="\t" + i + " - ";
 
 			for (int j = 0; j < map[0].length; j++) {
 
 				boolean check = true;
 
 				if ((i == startI && j == startJ) && (startI != 0 && startJ != 0)) {
-					System.out.print("I ");
+					exit += "I ";
 					check = false;
 				} else if ((i == endI && j == endJ) && (endI != 0 && endJ != 0)) {
-					System.out.print("F ");
+					exit += "F ";
 					check = false;
 				}
 					
@@ -227,8 +227,8 @@ public class Maze{
 					for (int k = 0; k < path.size(); k++) {
 							
 						if(i==path.get(k).getX() && j==path.get(k).getY()) {
-								
-							System.out.print(path.get(k).getDirection()+" ");
+							
+							exit += path.get(k).getDirection()+" ";
 							camino=true;
 								
 						}
@@ -236,16 +236,18 @@ public class Maze{
 					}
 						
 					if(!camino) {
-						System.out.print(map[i][j]+" ");
+						exit += map[i][j]+" ";
 					}
 
 				}
 
 			}
 
-			System.out.println();
+			exit += "\n";
 
 		}
+		
+		return exit;
 
 	}
 	
@@ -279,13 +281,15 @@ public class Maze{
 	
 	/* METODO PARA MOSTRAR LOS NUMEROS DE COLUMNA EN VERTICAL */
 	
-	private void numberVertically() {
+	private String numberVertically() {
+		
+		String exit="";
 		
 		int figure = maxFigure(map[0].length); // SE BUSCAN LAS CIFRAS DEL NUMERO MAS GRANDE
 		
 		for (int i = 0; i < figure; i++) { // SE RECORREN PRIMERO LAS ALTURAS POR EL NUMERO MAXIMO DE CIFRAS
 			
-			System.out.print("\n\t\t");
+			exit+="\n\t";
 			
 			for (int j = 0; j < map[0].length; j++) { // SE RECORRE EL TAMAÑO DE LAS COLUMNAS DE LA MATRIZ
 				
@@ -294,9 +298,9 @@ public class Maze{
 				if(jFigure < (i+1)) { // SI LAS CIFRAS DE LA COLMNA SON MENORES QUE EL Nº DE FILA
 					
 					if(jFigure==1 && i==0) { // SI LAS CIFRAS SON 1 Y LA FILA ES LA PRIMERA ENTONCES PINTA EL NUMERO
-						System.out.print(j+" ");
+						exit+=j+" ";
 					}else { // EN OTRO CASO, PONE UN SIMBOLO INDICADOR
-						System.out.print("| ");
+						exit+="| ";
 					}
 				
 				}else if(jFigure >= (i+1)) { // SI LAS CIFRAS DE LA COLUMNA SON MAYOR O IGUAL QUE EL Nº DE FILA
@@ -310,7 +314,7 @@ public class Maze{
 						index=number.length()-1; // EN OTRO CASO SERÁ EL ULTIMO NUMERO.
 					}
 					
-					System.out.print(number.charAt(index)+" "); // IMPRIME LA CIFRA CORRESPONDIENTE
+					exit+=number.charAt(index)+" "; // IMPRIME LA CIFRA CORRESPONDIENTE
 					
 				}
 				
@@ -318,18 +322,18 @@ public class Maze{
 			
 		}
 		
-		System.out.print("\n\t\t");
+		exit+="\n\t";
 		
 		for (int i = 0; i < map[0].length; i++) {
 			
 			String linea = "| ";
 			
-			System.out.print(linea);
+			exit+=linea;
 			
 		}
 		
-		System.out.println("\n");
-
+		exit+="\n\n";
+		return exit;
 	}
 	
 	/* METODO PARA CALCULAR LAS CIFRAS DE UN NUMERO */

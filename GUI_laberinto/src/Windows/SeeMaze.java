@@ -14,15 +14,18 @@ tener un botón para volver atrás.
 public class SeeMaze extends JFrame implements ActionListener{
 
 	public Logged logged;
+	public Caminos caminos;
 	private Container contenedor;
 	private JLabel titulo, labelInfo;
 	private JButton exit;
+	private JTextArea textArea;
 	
 	public SeeMaze(Logged logged) {
 		
 		this.logged=logged;
+		this.caminos=null;
 		this.setTitle("Maze_Solver "+Config.VERSION_CODE);
-		this.setBounds(600,200,400,500);
+		this.setBounds(600,200,773,638);
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		
 		this.contenedor=this.getContentPane();
@@ -31,6 +34,25 @@ public class SeeMaze extends JFrame implements ActionListener{
 		this.titulo();
 		this.labels();
 		this.botones();
+		pintar();	
+
+	}
+	
+	public SeeMaze(Caminos caminos) {
+		
+		this.caminos=caminos;
+		this.logged=null;
+		this.setTitle("Maze_Solver "+Config.VERSION_CODE);
+		this.setBounds(600,200,773,638);
+		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+		
+		this.contenedor=this.getContentPane();
+		this.contenedor.setLayout(null);
+		
+		this.titulo();
+		this.labels();
+		this.botones();
+		pintar();	
 
 	}
 
@@ -49,7 +71,7 @@ public class SeeMaze extends JFrame implements ActionListener{
 
 		this.titulo = new JLabel("VISUALIZACION LABERINTO");
 		this.titulo.setFont(new Font("Arial", Font.BOLD, 24));
-		this.titulo.setBounds(29, 11, 331, 40);
+		this.titulo.setBounds(219, 11, 331, 40);
 		this.contenedor.add(this.titulo);
 
 	}
@@ -58,13 +80,13 @@ public class SeeMaze extends JFrame implements ActionListener{
 		
 		this.exit=new JButton("Volver");
 		this.exit.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.exit.setBounds(115, 425, 160, 25);
+		this.exit.setBounds(303, 563, 160, 25);
 		this.exit.addActionListener(this);
 		this.contenedor.add(this.exit);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(10, 47, 364, 367);
-		getContentPane().add(textPane);
+		this.textArea = new JTextArea();
+		textArea.setBounds(10, 49, 737, 503);
+		getContentPane().add(textArea);
 
 	}
 
@@ -73,7 +95,7 @@ public class SeeMaze extends JFrame implements ActionListener{
 		// label info
 		this.labelInfo = new JLabel("");
 		this.labelInfo.setFont(new Font("Arial", Font.BOLD, 16));
-		this.labelInfo.setBounds(10, 331, 364, 119);
+		this.labelInfo.setBounds(320, 563, 160, 25);
 		this.contenedor.add(this.labelInfo);
 
 	}
@@ -81,7 +103,18 @@ public class SeeMaze extends JFrame implements ActionListener{
 	private void volver() {
 		
 		this.setVisible(false);
-		this.logged.setVisible(true);
+		
+		if(this.logged!=null) {
+			this.logged.setVisible(true);
+		}else {
+			//this.caminos.setVisible(true);
+		}
+		
+	}
+	
+	private void pintar() {
+		
+		this.textArea.setText(this.logged.currentMaze.showMaze());
 		
 	}
 }
