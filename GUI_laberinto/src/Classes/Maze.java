@@ -448,27 +448,23 @@ public class Maze{
 	 * 
 	 */
 
-	public void firstWay() {
+	public boolean firstWay() {
 		
 		path.clear();
 		
 		char[][] maze = simplifyMaze();
-
-		String exit="";
 		
 		if (goAhead(startI, startJ,maze)) {
-			exit="exito";
+			
 			printPath();
 			showMaze();
+			return true;
 
 		} else {
-			exit="fracaso";
-
-			System.out.println("\n\tEl laberinto no tiene solución.");
+			
+			return false;
 			
 		}
-		
-		Log.insertLog(Log.FIRST_WAY,exit+" Numero de pasos: "+path.size());
 
 	}
 	
@@ -549,7 +545,7 @@ public class Maze{
 	 * 
 	 */
 
-	public void shorterWay() {
+	public boolean shorterWay() {
 		
 		path.clear();
 		char[][] maze = simplifyMaze();
@@ -565,22 +561,18 @@ public class Maze{
 		}
 		
 		goAheadAllWays(startI, startJ, path2,maze);
-		String exit ="";
-		int steps;
 		
 		if(this.find) { 
-			exit="exito";
+			
 			printPath();
 			showMaze();
-			steps=path.size();
+			return true;
 			
 		}else {
-			exit="fracaso";
-			steps=0;
-			System.out.println("\n\tNo hay ninguna solución posible.");
+			
+			return false;
+			
 		}
-		
-		Log.insertLog(Log.SHORTER_WAY,exit+" Numero de pasos: "+steps);
 
 	}
 	
