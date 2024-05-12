@@ -56,7 +56,7 @@ public class Maze{
 	
 	/* METODO PARA RESETEAR VALORES DEL LABERINTO */
 	
-	private void deleteMaze(boolean total) {
+	public void deleteMaze(boolean total) {
 		
 		if(total) { // SI QUEIRO RESETEARLOS TODOS
 			
@@ -354,121 +354,59 @@ public class Maze{
 	
 	/* METODO PARA ESTABLECER CASILLAS DE ENTRADA Y SALIDA DEL LABERINTO */
 	
-	/**
-	 * Método que permite al usuario establecer las casillas de entrada y salida para 
-	 * el laberinto en uso.
-	 * 
-	 * Las casillas no podrán ser paredes, estar fuera del laberinto o ser la misma casilla.
-	 * 
-	 */
-	
-	public void setStartEnd() {
-		
-		deleteMaze(false); // SE RESETEAN LAS CASILLAS ANTERIORES
-		
-		showMaze();
-		
-		if(setIJ(true)) { // SI LA CASILLA DE ENTRADA SE ESTABLECE
-			System.out.println("\r\tCASILLA DE ENTRADA FIJADA.");
-			Log.insertLog(Log.MAZE_IN_OUT,"Casilla de entrada establecida --> "+startI+" "+startJ);
-		}else { // EN OTRO CASO, SI EL USUARIO DESISTE SE TERMINA EL PROGRAMA.
-			System.out.println("\r\tNO SE HA PODIDO FIJAR LA CASILLA DE ENTRADA.");
-			return;
-		}
-		
-		showMaze();
-		
-		if(setIJ(false)) { // SI LA CASILLA DE SALIDA SE ESTABLECE
-			System.out.println("\r\tCASILLA DE SALIDA FIJADA.");
-			Log.insertLog(Log.MAZE_IN_OUT,"Casilla de salida establecida --> "+endI+" "+endJ);
-		}else { // EN OTRO CASO, SI EL USUARIO DESISTE SE TERMINA EL PROGRAMA.
-			System.out.println("\r\tNO SE HA PODIDO FIJAR LA CASILLA DE SALIDA.");
-		}
-		
-		showMaze();
-		
-	}
-	
 	/* METODO PARA ESTABLECER CASILLA */
 	
-	private boolean setIJ(boolean in) { // SI ES TRUE SE ESTABLECE ENTRADA, SI ES FALSE LA SALIDA
+	public boolean setIJ(boolean in, int i, int j) { // SI ES TRUE SE ESTABLECE ENTRADA, SI ES FALSE LA SALIDA
 		
-		int num = 0;
-		String casilla ="";
-		
+		// ESTABLECE Y COMPRUEBA LA FILA
+				
+		if(i<0 || i>map.length-1) {
+			deleteMaze(false); // SE RESETEAN ENTRADA Y SALIDA
+			return false;
+		}		
+			
 		if(in) {
-			casilla="entrada";
+			startI=i;
 		}else {
-			casilla="salida";
+			endI=i;
 		}
-		
-		do { 
 			
-			do { // ESTABLECE Y COMPRUEBA LA FILA
-				
-				num=Input.getInt("\r\tIntroduzca la fila de "+casilla+": ", true);
-				
-				if(num<0 || num>map.length-1) {
-					System.out.println("\r\tEl número debe de ser mayor o igual que 0 y menor que "+(map.length-1));
-					Log.insertLog(Log.MAZE_IN_OUT,"ERROR al fijar fila: "+num);
-
-				}
-				
-			}while(num<0 || num>map.length-1);
-			
-			if(in) {
-				startI=num;
-			}else {
-				endI=num;
-			}
-			
-			do { // ESTABLECE Y COMPRUEBA LA COLUMNA
-				
-				num=Input.getInt("\tIntroduzca la columna de "+casilla+": ", true);
-				
-				if(num<0 || num>map[0].length-1) {
-					System.out.println("\r\tEl número debe de ser mayor o igual que 0 y menor que "+(map[0].length-1));
-					Log.insertLog(Log.MAZE_IN_OUT,"ERROR al fijar columna: "+num);
-				}
-				
-			}while(num<0 || num>map[0].length-1);
-			
-			if(in) {
-				startJ=num;
-			}else {
-				endJ=num;
-			}
-			
-			if(sameInOut()) { // SI LAS CASILLAS DE ENTRADA Y SALIDA SON LAS MISMAS
-				
-				System.out.println("\r\tLas casillas de entrada y salida coinciden.");
-				Log.insertLog(Log.MAZE_IN_OUT,"ERROR casillas coinciden");
-				
-				if(Utils.confirmExit("\r\t¿Desea ingresar otra casilla de "+casilla+"? SI-S NO-N ", "N")) {
-					deleteMaze(false); // SE RESETEAN ENTRADA Y SALIDA
-					return false;
-				}
-				
-			} else {
-
-				if (in && (map[startI][startJ] == ' ')) { // SI LA CASILLA ES VALIDA...
-					return true;
-				} else if (!in && (map[endI][endJ] == ' ')) { // SI LA CASILLA ES VALIDA...
-					return true;
-				} else { // EN OTRO CASO...
+		// ESTABLECE Y COMPRUEBA LA COLUMNA
 					
-					System.out.println("\r\tLa casilla coincide con una pared.");
-					Log.insertLog(Log.MAZE_IN_OUT,"ERROR la casilla es una pared");
-					
-					if (Utils.confirmExit("\r\t¿Desea ingresar otra casilla de " + casilla + "? SI-S NO-N ", "N")) {
-						deleteMaze(false); // SE RESETEAN ENTRADA Y SALIDA
-						return false;
-					}
-				}
-
-			}
+		if(j<0 || j>map[0].length-1) {
+				deleteMaze(false); // SE RESETEAN ENTRADA Y SALIDA
+				return false;
+		}
 			
-		}while(true);
+		if(in) {
+			startJ=j;
+		}else {
+			endJ=j;
+		}
+	
+		if(sameInOut()) { // SI LAS CASILLAS DE ENTRADA Y SALIDA SON LAS MISMAS
+			
+			deleteMaze(false); // SE RESETEAN ENTRADA Y SALIDA
+			return false;
+				
+		} else {
+
+			if (in && (map[startI][startJ] == ' ')) { // SI LA CASILLA ES VALIDA...
+				
+				return true;
+				
+			} else if (!in && (map[endI][endJ] == ' ')) { // SI LA CASILLA ES VALIDA...
+				
+				return true;
+				
+			} else { // EN OTRO CASO...
+					
+				deleteMaze(false); // SE RESETEAN ENTRADA Y SALIDA
+				return false;
+				
+			}
+
+		}
 		
 	}
 	

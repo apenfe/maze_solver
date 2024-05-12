@@ -205,3 +205,9 @@
 06/05/2024 10:57:17 - ---------------------------------------------------------
 [Inicio del Programa - [0;34m✅ -- Version Estable: 1.4.0 --[0m] - 
 06/05/2024 10:57:45 - [Final del Programa - [0;34m✅ -- Version Estable: 1.4.0 --[0m] - 
+11/05/2024 18:58:35 - ---------------------------------------------------------
+[Inicio del Programa - [0;34m✅ -- Version Estable: 1.4.0 --[0m] - 
+11/05/2024 18:58:53 - [Evento login] - Login exitoso: @apenfe
+11/05/2024 18:59:14 - [Final del Programa - [0;34m✅ -- Version Estable: 1.4.0 --[0m] - 
+12/05/2024 18:17:11 - ---------------------------------------------------------
+[Inicio del Programa - [0;34m✅ -- Version Estable: 1.4.0 --[0m] - 

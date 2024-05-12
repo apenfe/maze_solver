@@ -401,3 +401,36 @@
 11/05/2024 13:17:39 - ---------------------------------------------------------
 [Inicio del Programa - V2.4.0] - 
 11/05/2024 13:17:55 - [Evento login] - Login exitoso: @apenfe
+11/05/2024 18:57:25 - ---------------------------------------------------------
+[Inicio del Programa - V2.4.0] - 
+11/05/2024 18:57:54 - [Evento login] - Login exitoso: @apenfe
+11/05/2024 18:57:58 - [Datos usuario] - Usuario: @apenfe, ID: 1
+12/05/2024 18:17:29 - ---------------------------------------------------------
+[Inicio del Programa - V2.4.0] - 
+12/05/2024 18:17:41 - [Evento login] - Login exitoso: @apenfe
+12/05/2024 18:17:52 - [Datos usuario] - Usuario: @apenfe, ID: 1
+12/05/2024 18:18:02 - [Final del Programa - V2.4.0] - 
+12/05/2024 18:29:28 - ---------------------------------------------------------
+[Inicio del Programa - V2.4.0] - 
+12/05/2024 18:29:42 - [Evento login] - Login exitoso: @apenfe
+12/05/2024 18:38:00 - ---------------------------------------------------------
+[Inicio del Programa - V2.4.0] - 
+12/05/2024 18:38:12 - [Evento login] - Login exitoso: @apenfe
+12/05/2024 18:53:44 - ---------------------------------------------------------
+[Inicio del Programa - V2.4.0] - 
+12/05/2024 18:53:55 - [Evento login] - Login exitoso: @apenfe
+12/05/2024 19:02:42 - ---------------------------------------------------------
+[Inicio del Programa - V2.4.0] - 
+12/05/2024 19:02:54 - [Evento login] - Login exitoso: @apenfe
+12/05/2024 19:04:41 - ---------------------------------------------------------
+[Inicio del Programa - V2.4.0] - 
+12/05/2024 19:04:54 - [Evento login] - Login exitoso: @apenfe
+12/05/2024 19:06:34 - ---------------------------------------------------------
+[Inicio del Programa - V2.4.0] - 
+12/05/2024 19:06:37 - [Final del Programa - V2.4.0] - 
+12/05/2024 19:06:43 - ---------------------------------------------------------
+[Inicio del Programa - V2.4.0] - 
+12/05/2024 19:06:53 - [Evento login] - Login exitoso: @apenfe
+12/05/2024 19:09:34 - ---------------------------------------------------------
+[Inicio del Programa - V2.4.0] - 
+12/05/2024 19:09:47 - [Evento login] - Login exitoso: @apenfe
