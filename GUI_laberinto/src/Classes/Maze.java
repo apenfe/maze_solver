@@ -198,25 +198,21 @@ public class Maze{
 	 * 
 	 */
 	
-	public String showMaze() {
+	public char[][] showMaze() {
 		
-		String exit = "";
-		
-		exit += numberVertically(); // SE MUESTRAN LOS NUMEROS DE COLUMNA EN VERTICAL
+		char[][] newmap = new char[map.length][map[0].length];
 
 		for (int i = 0; i < map.length; i++) {
-
-			exit+="\t" + i + " - ";
 
 			for (int j = 0; j < map[0].length; j++) {
 
 				boolean check = true;
 
 				if ((i == startI && j == startJ) && (startI != 0 && startJ != 0)) {
-					exit += "I ";
+					newmap[i][j]= 'E';
 					check = false;
 				} else if ((i == endI && j == endJ) && (endI != 0 && endJ != 0)) {
-					exit += "F ";
+					newmap[i][j]= 'S';
 					check = false;
 				}
 					
@@ -227,8 +223,7 @@ public class Maze{
 					for (int k = 0; k < path.size(); k++) {
 							
 						if(i==path.get(k).getX() && j==path.get(k).getY()) {
-							
-							exit += path.get(k).getDirection()+" ";
+							newmap[i][j]= path.get(k).getDirection();
 							camino=true;
 								
 						}
@@ -236,18 +231,26 @@ public class Maze{
 					}
 						
 					if(!camino) {
-						exit += map[i][j]+" ";
+						
+						if(map[i][j]=='#') {
+							
+							newmap[i][j]= '#';
+							
+						}else {
+							
+							newmap[i][j]= ' ';
+							
+						}
+						
 					}
 
 				}
 
 			}
-
-			exit += "\n";
-
+			
 		}
 		
-		return exit;
+		return newmap;
 
 	}
 	
@@ -462,10 +465,11 @@ public class Maze{
 			
 			printPath();
 			showMaze();
+			//path.clear();
 			return true;
 
 		} else {
-			
+			//path.clear();
 			return false;
 			
 		}
@@ -491,13 +495,13 @@ public class Maze{
 	/* COMPRUEBA TODAS LAS COMBINACIONES HASTA ENCONTRAR UNA SOLUCION */
 	
 	private boolean goAhead(int i, int j, char[][] maze) {
-
-		if (i == endI && j == endJ) {
-			return true;
-		}
 		
 		if (maze[i][j] == '#' || checkPath(i,j,path)) {
 			return false; 
+		}
+
+		if (i == endI && j == endJ) {
+			return true;
 		}
 		
 		path.push(new Coordinate(i,j));
@@ -570,10 +574,11 @@ public class Maze{
 			
 			printPath();
 			showMaze();
+			//path.clear();
 			return true;
 			
 		}else {
-			
+			//path.clear();
 			return false;
 			
 		}
@@ -583,6 +588,14 @@ public class Maze{
 	/* BUSCA TODOS LOS CAMINOS Y SE QUEDA CON EL MAS CORTO DE TODOS ELLOS */
 	
 	private boolean goAheadAllWays(int i, int j, Stack<Coordinate> path2, char[][] maze ) {
+		
+		if (path2.size()>path.size()) { 
+			return false; 
+		}
+		
+		if (maze[i][j] == '#' || checkPath(i,j,path2)) {
+			return false; 
+		}
 
 		if (i == endI && j == endJ) {
 			
@@ -594,14 +607,6 @@ public class Maze{
 			}
 			
 			return true;
-		}
-		
-		if (maze[i][j] == '#' || checkPath(i,j,path2)) {
-			return false; 
-		}
-		
-		if (path2.size()>path.size()) { 
-			return false; 
 		}
 		
 		path2.push(new Coordinate(i,j));

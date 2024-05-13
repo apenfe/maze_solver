@@ -2,6 +2,8 @@ package Windows;
 
 import javax.swing.*;
 import Classes.Config;
+import processing.core.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -114,7 +116,9 @@ public class SeeMaze extends JFrame implements ActionListener{
 	
 	private void pintar() {
 		
-		this.textArea.setText(this.logged.currentMaze.showMaze());
+		ShowMaze vista = new ShowMaze(this.logged.currentMaze.showMaze(),logged);
+		PApplet.runSketch(new String[]{"Windows/ShowMaze"}, vista);
 		
 	}
+	
 }

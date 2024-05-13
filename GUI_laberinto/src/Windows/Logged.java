@@ -5,6 +5,7 @@ import javax.swing.*;
 import Classes.Config;
 import Classes.Log;
 import Classes.Maze;
+import processing.core.PApplet;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -14,7 +15,7 @@ public class Logged extends JFrame implements ActionListener{
 	public Maze currentMaze = new Maze();
 	public Login loginVentana;
 	private Container contenedor;
-	private JLabel titulo, labelInfo;
+	public JLabel titulo, labelInfo;
 	private JButton cargarLaberinto, verLaberinto, exit, EntradaSalida, BuscarCaminos, info, logout;
 	
 	public Logged(Login login) {
@@ -152,11 +153,11 @@ public class Logged extends JFrame implements ActionListener{
 	private void verlaberinto() {
 		
 		if(this.currentMaze.isLoaded()) {
+			this.currentMaze.path.clear();
+			ShowMaze vista = new ShowMaze(this.currentMaze.showMaze(),this);
+			PApplet.runSketch(new String[]{"Windows/ShowMaze"}, vista);
 			
-			SeeMaze ver = new SeeMaze(this);
-			ver.setVisible(true);
 			this.setVisible(false);
-			this.labelInfo.setText("");
 			
 		}else {
 			

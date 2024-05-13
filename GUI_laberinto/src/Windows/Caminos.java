@@ -2,6 +2,8 @@ package Windows;
 
 import javax.swing.*;
 import Classes.Config;
+import processing.core.PApplet;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -16,7 +18,7 @@ el listado de pasos que ha seguido. Deberá tener un botón para volver atrás.
 	private JTextArea textArea;
 	public Logged logged;
 	private Container contenedor;
-	private JLabel titulo, labelInfo;
+	public JLabel titulo, labelInfo;
 	private JButton exit, primerCamino, mejorCamino;
 	
 	public Caminos(Logged logged) {
@@ -141,9 +143,12 @@ el listado de pasos que ha seguido. Deberá tener un botón para volver atrás.
 	}
 	
 	private void pintar() {
-		
-		this.textArea.setText(this.logged.currentMaze.showMaze());
-		
+			
+		ShowMaze vista = new ShowMaze(this.logged.currentMaze.showMaze(),this);
+		PApplet.runSketch(new String[]{"Windows/ShowMaze"}, vista);
+			
+		this.setVisible(false);
+
 	}
 
 }
