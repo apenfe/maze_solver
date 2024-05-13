@@ -1,5 +1,8 @@
 package Windows;
 
+import java.io.File;
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 
 public class ShowMaze extends PApplet {
@@ -47,6 +50,7 @@ public class ShowMaze extends PApplet {
 	// Método para dibujar en el lienzo
 	public void draw() {
 
+		int veces = 0;
 		background(255);
 		stroke(0);
 		
@@ -60,6 +64,10 @@ public class ShowMaze extends PApplet {
                 // Dibujar el carácter en la posición calculada
                 drawChar(map[i][j], x, y, size);
             }
+        }
+        
+        if(veces==0 && caminos==null) {
+        	saveAsJPG();
         }
         
 	}
@@ -94,6 +102,7 @@ public class ShowMaze extends PApplet {
 		            ellipse(x + size/2, y + size/2, shapeSize, shapeSize); // Centramos el círculo en la celda
 		            break;
 		    }
+		    
 		}
 
 	@Override
@@ -112,7 +121,54 @@ public class ShowMaze extends PApplet {
 			caminos.labelInfo.setText("");
 
 		}
+		
+		noLoop();
 
+	}
+	
+	public void saveAsJPG() {
+		
+		 ArrayList<String> namesFiles = new ArrayList<String>();
+	        File[] files = new File[0];
+	        
+	        try {
+	        	
+	        	File route = new File("images\\");
+	            files = route.listFiles();
+				
+			} catch (Exception e) {
+				
+				System.err.println("\n\tERROR - CONTACTAR SERVICIO TECNICO.");
+			}
+
+	        if (files != null) {
+	        	
+	            for (File file : files) { // POR CADA ARCHIVO...
+	                
+	                if (file.isFile() && file.getName().toLowerCase().endsWith(".jpg")) {
+	                    namesFiles.add(file.getName());
+	                }
+	            }
+	            
+	        }
+	        
+	        boolean guardado = false;
+	        
+	        for (int i = 0; i < namesFiles.size(); i++) {
+	        	
+	        	if(namesFiles.get(i).equals(logged.currentMaze.fileName + ".jpg")) {
+	        		guardado = true;
+	        		System.out.println("ya guardao: "+logged.currentMaze.fileName);
+	        	}
+				
+			}
+	        
+	        if(!guardado) {
+	        	 save("images\\"+logged.currentMaze.fileName + ".jpg");
+	        		System.out.println("se esta guardadno");
+
+	        }
+	    
 	}
 
 }

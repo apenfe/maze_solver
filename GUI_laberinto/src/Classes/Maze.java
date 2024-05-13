@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
+import Windows.ShowMaze;
+import processing.core.PApplet;
+
 /**
  * Clase Maze utilizada para cragar un laberinto desde un fichero y realizar varias acciones con él.
  * 
@@ -136,6 +139,7 @@ public class Maze{
             }
             
         }
+        
 
         return namesFiles;
     }
@@ -178,6 +182,8 @@ public class Maze{
          		}
              	
      		}
+             
+             
              
             return true;
 			

@@ -8,14 +8,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Caminos extends JFrame implements ActionListener{
-	
-	/*
-	 * Seleccionar algoritmo:
-Mostrará dos botones de opciones: uno para el primer camino posible y otro para el camino
-más corto. Al resolver el algoritmo mostrará por pantalla el laberinto hecho con imágenes y
-el listado de pasos que ha seguido. Deberá tener un botón para volver atrás.
-	 */
-	private JTextArea textArea;
 	public Logged logged;
 	private Container contenedor;
 	public JLabel titulo, labelInfo;
@@ -75,26 +67,36 @@ el listado de pasos que ha seguido. Deberá tener un botón para volver atrás.
 		
 		this.mejorCamino=new JButton("Camino mas corto");
 		this.mejorCamino.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.mejorCamino.setBounds(10, 62, 160, 25);
+		this.mejorCamino.setBounds(10, 62, 180, 25);
 		this.mejorCamino.addActionListener(this);
 		this.contenedor.add(this.mejorCamino);
 		
 		this.primerCamino=new JButton("Primer camino");
 		this.primerCamino.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.primerCamino.setBounds(177, 62, 197, 25);
+		this.primerCamino.setBounds(200, 62, 174, 25);
 		this.primerCamino.addActionListener(this);
 		this.contenedor.add(this.primerCamino);
 		
-		this.textArea = new JTextArea();
-		textArea.setBounds(10, 49, 737, 503);
-		getContentPane().add(textArea);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(10, 98, 364, 316); // Establece el tamaño del JLabel
+		getContentPane().add(lblNewLabel);
 
+		String imagePath = "C:\\Users\\adria\\DAW\\1º AÑO\\PROGRAMACION\\maze_solver\\GUI_laberinto\\images\\" + logged.currentMaze.fileName + ".jpg";
+		ImageIcon imageIcon = new ImageIcon(imagePath);
+
+		Image image = imageIcon.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH);
+
+		ImageIcon scaledImageIcon = new ImageIcon(image);
+
+		lblNewLabel.setIcon(scaledImageIcon);
+	
 	}
 
 	private void labels() {
 
 		// label info
-		this.labelInfo = new JLabel("");
+		this.labelInfo = new JLabel("imagen");
 		this.labelInfo.setFont(new Font("Arial", Font.BOLD, 16));
 		this.labelInfo.setBounds(10, 331, 364, 119);
 		this.contenedor.add(this.labelInfo);
@@ -150,5 +152,4 @@ el listado de pasos que ha seguido. Deberá tener un botón para volver atrás.
 		this.setVisible(false);
 
 	}
-
 }

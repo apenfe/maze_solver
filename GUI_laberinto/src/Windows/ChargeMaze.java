@@ -13,18 +13,20 @@ public class ChargeMaze extends JFrame implements ActionListener, MouseListener{
 	
 	private Logged logged;
 	private Container contenedor;
-	private JLabel titulo, labelBuscar, labelInfo;
+	private JLabel titulo, labelBuscar, labelInfo, lblNewLabel;
 	private JTextField campoBuscar;
 	private JButton limpiar, enviar, volver;
 	private JTable resultados;
 	private JScrollPane tableScroll;
 	private String[] columnas = {"Laberintos"};
+	private String filename="";
 	
 	public ChargeMaze(Logged logged) {
 		
+		this.filename="laberinto1.txt";
 		this.logged=logged;
 		this.setTitle("Maze_Solver "+Config.VERSION_CODE);
-		this.setBounds(600,200,400,500);
+		this.setBounds(600,200,858,500);
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		
 		this.contenedor=this.getContentPane();
@@ -60,7 +62,7 @@ public class ChargeMaze extends JFrame implements ActionListener, MouseListener{
 		
 		this.resultados = new JTable(new String[0][0],this.columnas);
 		this.tableScroll=new JScrollPane(this.resultados);
-		this.tableScroll.setBounds(30,140,332,220);
+		this.tableScroll.setBounds(10,156,338,260);
 		this.resultados.addMouseListener(this); ///
 		this.contenedor.add(this.tableScroll);
 		this.rellenarTabla();
@@ -79,6 +81,13 @@ public class ChargeMaze extends JFrame implements ActionListener, MouseListener{
 	        
 	        if(this.logged.currentMaze.loadMaze(selectedValue.toString())) {
 				
+	        	this.filename=selectedValue.toString();
+	        	
+	        	System.out.println(selectedValue.toString());
+	        	updateImage();
+	        	
+	   
+	    		System.out.println(selectedValue.toString());
 				this.labelInfo.setText("Laberinto cargado correctamente "+selectedValue.toString());
 				this.labelInfo.setForeground(Color.GREEN);
 				
@@ -95,7 +104,7 @@ public class ChargeMaze extends JFrame implements ActionListener, MouseListener{
 
 		this.titulo = new JLabel("CARGAR LABERINTO");
 		this.titulo.setFont(new Font("Arial", Font.PLAIN, 24));
-		this.titulo.setBounds(30, 21, 500, 40);
+		this.titulo.setBounds(30, 11, 500, 40);
 		this.contenedor.add(this.titulo);
 
 	}
@@ -104,21 +113,37 @@ public class ChargeMaze extends JFrame implements ActionListener, MouseListener{
 		
 		this.enviar=new JButton("Cargar");
 		this.enviar.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.enviar.setBounds(250,90,95,25);
+		this.enviar.setBounds(72,124,95,25);
 		this.enviar.addActionListener(this);
 		this.contenedor.add(this.enviar);
 		
-		this.limpiar=new JButton("Limpiar campos");
+		this.limpiar=new JButton("Limpiar");
 		this.limpiar.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.limpiar.setBounds(50,374,150,25);
+		this.limpiar.setBounds(201,124,95,25);
 		this.limpiar.addActionListener(this);
 		this.contenedor.add(this.limpiar);	
 		
 		this.volver=new JButton("Volver");
 		this.volver.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.volver.setBounds(224,374,95,25);
+		this.volver.setBounds(147,425,95,25);
 		this.volver.addActionListener(this);
 		this.contenedor.add(this.volver);	
+		
+		this.lblNewLabel = new JLabel("");
+		this.lblNewLabel.setBounds(358, 11, 474, 439); // Establece el tamaño del JLabel
+		this.contenedor.add(lblNewLabel);
+		
+		String imagePath = "C:\\Users\\adria\\DAW\\1º AÑO\\PROGRAMACION\\maze_solver\\GUI_laberinto\\images\\" +this.filename + ".jpg";
+		ImageIcon imageIcon = new ImageIcon(imagePath);
+
+		// Escalar la imagen al tamaño del JLabel
+		Image image = imageIcon.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH);
+
+		// Crear un nuevo ImageIcon con la imagen escalada
+		ImageIcon scaledImageIcon = new ImageIcon(image);
+
+		// Establecer la imagen escalada en el JLabel
+		this.lblNewLabel.setIcon(scaledImageIcon);
 		
 	}
 	
@@ -127,21 +152,21 @@ public class ChargeMaze extends JFrame implements ActionListener, MouseListener{
 		// buscar
 		this.labelBuscar = new JLabel("Buscar laberinto:");
 		this.labelBuscar.setFont(new Font("Arial", Font.PLAIN, 18));
-		this.labelBuscar.setBounds(30, 61, 200, 30);
+		this.labelBuscar.setBounds(10, 47, 142, 30);
 		this.contenedor.add(this.labelBuscar);
 
 		// campo buscar
 
 		this.campoBuscar = new JTextField();
 		this.campoBuscar.setFont(new Font("Arial", Font.PLAIN, 16));
-		this.campoBuscar.setBounds(30, 88, 200, 30);
+		this.campoBuscar.setBounds(148, 48, 200, 30);
 		this.contenedor.add(this.campoBuscar);
 
 		// label info
 
 		this.labelInfo = new JLabel("");
 		this.labelInfo.setFont(new Font("Arial", Font.BOLD, 20));
-		this.labelInfo.setBounds(30, 410, 332, 40);
+		this.labelInfo.setBounds(16, 88, 332, 30);
 		this.contenedor.add(this.labelInfo);
 
 	}
@@ -246,6 +271,24 @@ public class ChargeMaze extends JFrame implements ActionListener, MouseListener{
 		
 		this.resultados.setModel(new DefaultTableModel(datosTabla,this.columnas));
 		
+	}
+	
+	private void updateImage() {
+		
+		if (lblNewLabel != null) {
+	    // Cargar la nueva imagen en un ImageIcon
+	    ImageIcon newImageIcon = new ImageIcon("C:\\Users\\adria\\DAW\\1º AÑO\\PROGRAMACION\\maze_solver\\GUI_laberinto\\images\\" +this.filename + ".jpg");
+	    
+	    // Escalar la imagen al tamaño del JLabel
+	    Image image = newImageIcon.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH);
+	    
+	    // Crear un nuevo ImageIcon con la imagen escalada
+	    ImageIcon scaledImageIcon = new ImageIcon(image);
+	    
+	    // Establecer la nueva imagen escalada en el JLabel
+	    this.lblNewLabel.setIcon(scaledImageIcon);
+	    
+		}
 	}
 
 }

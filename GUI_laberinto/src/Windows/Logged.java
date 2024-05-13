@@ -140,6 +140,8 @@ public class Logged extends JFrame implements ActionListener{
 		carga.setVisible(true);
 		this.setVisible(false);
 		this.labelInfo.setText("");
+		
+		
 
 	}
 
