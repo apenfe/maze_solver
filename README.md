@@ -1,2 +1,2 @@
 # Maze_Solver
-![Solved Maze](laberinto/images/maze.png)
+![Interfaz gráfica](media/gui.png)
